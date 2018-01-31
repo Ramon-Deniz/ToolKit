@@ -1,0 +1,14 @@
+
+/* 
+    Created on : Jan 29, 2018, 11:26:38 AM
+    Author     : ramon
+*/
+
+#AnchorPane{
+    -fx-background-color: #4d4f52;
+}
+
+#Button{
+    -fx-background-color: #476ce7;
+    -fx-background-radius: 0;
+}
