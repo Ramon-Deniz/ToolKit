@@ -5,10 +5,39 @@
 */
 
 #AnchorPane{
-    -fx-background-color: #4d4f52;
+    -fx-background-color: #f0f0f0;
+}
+
+#Text{
+    -fx-text-fill: #000000;
+    -fx-font-size: 20px;
+    -fx-control-inner-background: #dbdbdb;
+    -fx-background-color: #dbdbdb;
+    -fx-background-radius: 0;
+}
+
+#Text .content{
+    -fx-background-color:#dbdbdb;
 }
 
 #Button{
-    -fx-background-color: #476ce7;
+    -fx-background-color: #00c2c8;
+    -fx-background-radius: 0;
+}
+#Button:focused{
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+#WindowButton{
+    -fx-background-color: #00c2c8;
+    -fx-background-radius: 0;
+}
+#WindowButton:focused{
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+#Button:hover{
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-color: #00e5ec;
     -fx-background-radius: 0;
 }

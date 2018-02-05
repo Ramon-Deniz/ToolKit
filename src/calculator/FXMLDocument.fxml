@@ -8,105 +8,168 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" opacity="1.0" prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="calculator.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="anchor" minHeight="399.0" minWidth="300.0" onKeyPressed="#handleKeyPress" opacity="1.0" prefHeight="406.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="calculator.FXMLDocumentController">
   <children>
-    <Label fx:id="label" layoutX="126.0" layoutY="120.0" minHeight="16.0" minWidth="69.0" />
-    <Button id="Button" fx:id="one" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleOne" prefHeight="50.0" prefWidth="50.0" text="1" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="225.0">
+    <Button id="Button" fx:id="one" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleOne" prefHeight="50.0" prefWidth="50.0" text="1" textAlignment="RIGHT" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="206.0">
       <font>
-        <Font name="System Bold" size="20.0" fx:id="x1" />
+        <Font size="20.0" fx:id="x1" />
       </font>
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="two" alignment="CENTER" font="$x1" layoutX="200.0" layoutY="225.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleTwo" prefHeight="50.0" prefWidth="50.0" text="2">
+    <Button id="Button" fx:id="two" alignment="CENTER" font="$x1" layoutX="50.0" layoutY="206.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleTwo" prefHeight="50.0" prefWidth="50.0" text="2" textAlignment="RIGHT">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="three" alignment="CENTER" font="$x1" layoutX="250.0" layoutY="225.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleThree" prefHeight="50.0" prefWidth="50.0" text="3">
+    <Button id="Button" fx:id="three" alignment="CENTER" font="$x1" layoutX="100.0" layoutY="206.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleThree" prefHeight="50.0" prefWidth="50.0" text="3">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="four" alignment="CENTER" font="$x1" layoutX="150.0" layoutY="275.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleFour" prefHeight="50.0" prefWidth="50.0" text="4">
+    <Button id="Button" fx:id="four" alignment="CENTER" font="$x1" layoutX="0.0" layoutY="256.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleFour" prefHeight="50.0" prefWidth="50.0" text="4">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="five" alignment="CENTER" font="$x1" layoutX="200.0" layoutY="275.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleFive" prefHeight="50.0" prefWidth="50.0" text="5">
+    <Button id="Button" fx:id="five" alignment="CENTER" font="$x1" layoutX="50.0" layoutY="256.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleFive" prefHeight="50.0" prefWidth="50.0" text="5">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="six" alignment="CENTER" font="$x1" layoutX="250.0" layoutY="275.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleSix" prefHeight="50.0" prefWidth="50.0" text="6">
+    <Button id="Button" fx:id="six" alignment="CENTER" font="$x1" layoutX="100.0" layoutY="256.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleSix" prefHeight="50.0" prefWidth="50.0" text="6">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="seven" alignment="CENTER" font="$x1" layoutX="150.0" layoutY="325.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleSeven" prefHeight="50.0" prefWidth="50.0" text="7">
+    <Button id="Button" fx:id="seven" alignment="CENTER" font="$x1" layoutX="0.0" layoutY="306.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleSeven" prefHeight="50.0" prefWidth="50.0" text="7">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="eight" alignment="CENTER" font="$x1" layoutX="200.0" layoutY="325.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleEight" prefHeight="50.0" prefWidth="50.0" text="8">
+    <Button id="Button" fx:id="eight" alignment="CENTER" font="$x1" layoutX="50.0" layoutY="306.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleEight" prefHeight="50.0" prefWidth="50.0" text="8">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="nine" alignment="CENTER" font="$x1" layoutX="250.0" layoutY="325.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleNine" prefHeight="50.0" prefWidth="50.0" text="9">
+    <Button id="Button" fx:id="nine" alignment="CENTER" font="$x1" layoutX="100.0" layoutY="306.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleNine" prefHeight="50.0" prefWidth="50.0" text="9">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="zero" alignment="CENTER" font="$x1" layoutX="200.0" layoutY="375.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleZero" prefHeight="50.0" prefWidth="50.0" text="0">
+    <Button id="Button" fx:id="zero" alignment="CENTER" font="$x1" layoutX="50.0" layoutY="356.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleZero" prefHeight="50.0" prefWidth="50.0" text="0">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="decimal" alignment="CENTER" font="$x1" layoutX="150.0" layoutY="375.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleDecimal" prefHeight="50.0" prefWidth="50.0" text=".">
-      <stylesheets>
-        <URL value="@Calculator.css" />
-      </stylesheets>
-    </Button>
-    <Button id="Button" fx:id="equals" alignment="CENTER" layoutX="250.0" layoutY="375.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleEquals" prefHeight="50.0" prefWidth="50.0" text="=">
+    <Button id="Button" fx:id="decimal" alignment="CENTER" layoutX="0.0" layoutY="356.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleDecimal" prefHeight="50.0" prefWidth="50.0" text=".">
       <font>
-        <Font name="System Bold" size="18.0" />
+        <Font name="System Italic" size="20.0" />
       </font>
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="plus" alignment="CENTER" layoutX="300.0" layoutY="225.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handlePlus" prefHeight="50.0" prefWidth="50.0" text="+">
+    <Button id="Button" fx:id="equals" alignment="CENTER" layoutX="150.0" layoutY="306.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleEquals" prefHeight="100.0" prefWidth="50.0" text="=">
       <font>
-        <Font name="System Bold" size="19.0" />
+        <Font size="18.0" fx:id="x2" />
       </font>
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="minus" alignment="CENTER" font="$x1" layoutX="300.0" layoutY="275.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleMinus" prefHeight="50.0" prefWidth="50.0" text="-">
+    <Button id="Button" fx:id="plus" alignment="CENTER" layoutX="150.0" layoutY="206.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handlePlus" prefHeight="50.0" prefWidth="50.0" text="+">
+      <font>
+        <Font name="System Italic" size="19.0" />
+      </font>
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="times" alignment="CENTER" font="$x1" layoutX="300.0" layoutY="325.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleTimes" prefHeight="50.0" prefWidth="50.0" text="x">
+    <Button id="Button" fx:id="minus" alignment="CENTER" font="$x1" layoutX="150.0" layoutY="256.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleMinus" prefHeight="50.0" prefWidth="50.0" text="-">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="divide" alignment="CENTER" font="$x1" layoutX="300.0" layoutY="375.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleDivide" prefHeight="50.0" prefWidth="50.0" text="/">
+    <Button id="Button" fx:id="times" alignment="CENTER" font="$x1" layoutX="200.0" layoutY="206.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleTimes" prefHeight="50.0" prefWidth="50.0" text="*">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <TextArea id="Text" fx:id="TextArea" layoutX="150.0" layoutY="47.0" prefHeight="178.0" prefWidth="200.0" promptText="" text="" wrapText="true">
+    <Button id="Button" fx:id="divide" alignment="CENTER" font="$x1" layoutX="200.0" layoutY="256.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleDivide" prefHeight="50.0" prefWidth="50.0" text="/">
       <stylesheets>
-        <URL value="@Calculator.css" />
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <TextArea id="Text" fx:id="TextArea" disable="false" editable="false" focusTraversable="false" layoutX="0.0" layoutY="36.0" mouseTransparent="false" prefHeight="85.0" prefWidth="300.0" promptText="" text="" wrapText="true">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </TextArea>
+    <Button id="Button" fx:id="leftParenthesis" alignment="CENTER" font="$x2" layoutX="200.0" layoutY="306.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleLeftParenthesis" prefHeight="50.0" prefWidth="50.0" text="(">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="Button" fx:id="power" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="206.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handlePower" prefHeight="50.0" prefWidth="50.0" text="^" textAlignment="JUSTIFY" underline="false">
+      <font>
+        <Font size="19.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="Button" fx:id="deleteCharacter" alignment="CENTER" font="$x1" layoutX="99.0" layoutY="356.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleDeleteCharacter" prefHeight="50.0" prefWidth="51.0" text="⬅">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="Button" fx:id="clear" alignment="CENTER" layoutX="200.0" layoutY="356.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleClear" prefHeight="50.0" prefWidth="50.0" text="CE">
+      <font>
+        <Font size="16.0" fx:id="x3" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="Button" fx:id="rightParenthesis" alignment="CENTER" font="$x2" layoutX="250.0" layoutY="306.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleRightParenthesis" prefHeight="50.0" prefWidth="49.9998779296875" text=")">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="Button" fx:id="factorial" alignment="CENTER" font="$x1" layoutX="250.0" layoutY="256.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handleFactorial" prefHeight="50.0" prefWidth="50.0" text="!">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="Button" fx:id="percent" alignment="CENTER" font="$x2" layoutX="250.0" layoutY="356.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-1.0" mnemonicParsing="false" onAction="#handlePercent" prefHeight="50.0" prefWidth="50.0" text="\%">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <TextArea id="Text" fx:id="TextArea2" layoutX="0.0" layoutY="121.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="85.0" prefWidth="300.0" wrapText="true">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </TextArea>
+    <Button id="WindowButton" fx:id="back" alignment="CENTER" font="$x1" layoutX="0.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="36.0" prefWidth="64.0" text="⮌" textAlignment="RIGHT">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="drag" layoutX="64.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="186.0" text="">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="close" font="$x3" layoutX="250.0" layoutY="0.0" minWidth="49.999900000002526" mnemonicParsing="false" onAction="#handleClose" prefHeight="36.0" prefWidth="49.999900000002526" text="X">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
   </children>
   <stylesheets>
-    <URL value="@Calculator.css" />
+    <URL value="@../toolKit/Tool.css" />
   </stylesheets>
 </AnchorPane>

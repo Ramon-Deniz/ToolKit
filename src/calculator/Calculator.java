@@ -12,7 +12,7 @@ import javafx.scene.Scene;
  */
 public class Calculator {
 
-    public static Scene calcScene;
+    public Scene calcScene;
     public static Parent root;
 
     public Calculator() throws IOException {
