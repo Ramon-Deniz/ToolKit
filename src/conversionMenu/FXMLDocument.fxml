@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="300.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="conversionMenu.FXMLDocumentController">
+  <children>
+    <Button id="WindowButton" fx:id="back" alignment="CENTER" layoutX="0.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="36.0" prefWidth="50.0" text="⮌" textAlignment="RIGHT">
+      <font>
+        <Font size="18.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="drag" layoutX="50.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="180.0" text="">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="close" layoutX="265.0" layoutY="0.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleClose" prefHeight="36.0" prefWidth="35.0" text="X">
+      <font>
+        <Font size="14.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="minimize" layoutX="230.0" layoutY="0.0" minWidth="25.0" mnemonicParsing="false" onAction="#handleMinimize" prefHeight="36.0" prefWidth="35.0" text="_">
+      <font>
+        <Font size="16.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <ComboBox id="Button" fx:id="conversionType" layoutX="50.0" layoutY="62.0" onAction="#handleConversionSelect" prefHeight="36.0" prefWidth="200.0" promptText="Conversion Type">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </ComboBox>
+    <TextArea id="Text" fx:id="text" layoutX="36.0" layoutY="186.0" mouseTransparent="false" prefHeight="36.0" prefWidth="215.0" promptText="" wrapText="false">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </TextArea>
+    <Line endX="100.0" endY="-50.0" layoutX="148.0" layoutY="271.0" startX="-95.0" startY="-50.0" />
+    <ComboBox id="Button" fx:id="initialUnits" disable="true" layoutX="50.0" layoutY="124.0" onAction="#handleInitialUnits" opacity="1.0" prefHeight="36.0" prefWidth="200.0" promptText="Units to Convert">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </ComboBox>
+    <ComboBox id="Button" fx:id="finalUnits" disable="true" layoutX="50.0" layoutY="248.0" onAction="#handleFinalUnits" opacity="1.0" prefHeight="36.0" prefWidth="200.0" promptText="Convert To">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </ComboBox>
+    <TextArea id="Text" fx:id="resultText" disable="false" layoutX="35.0" layoutY="310.0" mouseTransparent="true" prefHeight="36.0" prefWidth="215.0" promptText="" wrapText="true">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </TextArea>
+    <Text id="initialCurrency" fx:id="initialUnitText" layoutX="248.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Units" />
+    <Text fx:id="finalUnitText" layoutX="248.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Units" />
+  </children>
+  <stylesheets>
+    <URL value="@../toolKit/Tool.css" />
+  </stylesheets>
+</AnchorPane>

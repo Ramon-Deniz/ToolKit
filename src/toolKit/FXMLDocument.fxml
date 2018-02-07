@@ -18,17 +18,25 @@
         <URL value="@Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" font="$x1" layoutX="50.0" layoutY="159.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Conversion" textAlignment="CENTER">
+    <Button id="Button" fx:id="conversion" font="$x1" layoutX="50.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleConversion" prefHeight="50.0" prefWidth="200.0" text="Conversion" textAlignment="CENTER">
       <stylesheets>
         <URL value="@Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="WindowButton" fx:id="drag" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="250.0" text="">
+    <Button id="WindowButton" fx:id="drag" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="230.0" text="">
       <stylesheets>
         <URL value="@Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="WindowButton" layoutX="250.0" layoutY="0.0" minWidth="49.999900000002526" mnemonicParsing="false" onAction="#handleClose" prefHeight="36.0" prefWidth="49.999900000002526" text="X">
+    <Button id="WindowButton" layoutX="265.0" layoutY="0.0" minWidth="27.0" mnemonicParsing="false" onAction="#handleClose" prefHeight="36.0" prefWidth="35.0" text="X">
+      <font>
+        <Font size="14.0" />
+      </font>
+      <stylesheets>
+        <URL value="@Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="minimize" layoutX="230.0" layoutY="0.0" minWidth="25.0" mnemonicParsing="false" onAction="#handleMinimize" prefHeight="36.0" prefWidth="35.0" text="_">
       <font>
         <Font size="16.0" />
       </font>

@@ -28,13 +28,16 @@ public class CalculatorLogic {
             format(expression);
             solve(expression);
             stringExpression = expression.get(0);
+            if(stringExpression.length()-stringExpression.replaceAll("\\.", "").length()>1){
+                throw new InvalidExpressionException();
+            }
         } catch (InvalidExpressionException e) {
             stringExpression = "";
         }
         return stringExpression;
     }
 
-    private static void format(List<String> expression) {
+    private static void format(List<String> expression) throws InvalidExpressionException{
         if (expression.get(0).equals("-")) {
             expression.remove(0);
             expression.set(0, "-" + expression.get(0));

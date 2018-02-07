@@ -148,22 +148,30 @@
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <TextArea id="Text" fx:id="TextArea2" layoutX="0.0" layoutY="121.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="85.0" prefWidth="300.0" wrapText="true">
+    <TextArea id="SubText" fx:id="TextArea2" disable="true" layoutX="0.0" layoutY="121.0" minHeight="-Infinity" minWidth="-Infinity" opacity="1.0" prefHeight="85.0" prefWidth="300.0" wrapText="true">
       <stylesheets>
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </TextArea>
-    <Button id="WindowButton" fx:id="back" alignment="CENTER" font="$x1" layoutX="0.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="36.0" prefWidth="64.0" text="⮌" textAlignment="RIGHT">
+    <Button id="WindowButton" fx:id="back" alignment="CENTER" font="$x2" layoutX="0.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="36.0" prefWidth="50.0" text="⮌" textAlignment="RIGHT">
       <stylesheets>
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="WindowButton" fx:id="drag" layoutX="64.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="186.0" text="">
+    <Button id="WindowButton" fx:id="drag" layoutX="50.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="180.0" text="">
       <stylesheets>
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="WindowButton" fx:id="close" font="$x3" layoutX="250.0" layoutY="0.0" minWidth="49.999900000002526" mnemonicParsing="false" onAction="#handleClose" prefHeight="36.0" prefWidth="49.999900000002526" text="X">
+    <Button id="WindowButton" fx:id="close" layoutX="265.0" layoutY="0.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleClose" prefHeight="36.0" prefWidth="35.0" text="X">
+      <font>
+        <Font size="14.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" font="$x3" layoutX="230.0" layoutY="0.0" minWidth="25.0" mnemonicParsing="false" onAction="#handleMinimize" prefHeight="36.0" prefWidth="35.0" text="_">
       <stylesheets>
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>

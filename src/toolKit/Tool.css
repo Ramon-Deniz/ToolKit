@@ -11,17 +11,29 @@
 #Text{
     -fx-text-fill: #000000;
     -fx-font-size: 20px;
-    -fx-control-inner-background: #dbdbdb;
-    -fx-background-color: #dbdbdb;
+    -fx-control-inner-background: #f2f2f2;
+    -fx-background-color: #f2f2f2;
     -fx-background-radius: 0;
 }
 
 #Text .content{
-    -fx-background-color:#dbdbdb;
+    -fx-background-color:#f2f2f2;
+}
+
+#SubText{
+    -fx-text-fill: #111111;
+    -fx-font-size: 14px;
+    -fx-control-inner-background: #f2f2f2;
+    -fx-background-color: #f2f2f2;
+    -fx-background-radius: 0;
+}
+
+#SubText .content{
+    -fx-background-color:#f2f2f2;
 }
 
 #Button{
-    -fx-background-color: #00c2c8;
+    -fx-background-color: #00c0a0;
     -fx-background-radius: 0;
 }
 #Button:focused{
@@ -29,7 +41,7 @@
     -fx-background-radius: 0;
 }
 #WindowButton{
-    -fx-background-color: #00c2c8;
+    -fx-background-color: #00c0a0;
     -fx-background-radius: 0;
 }
 #WindowButton:focused{
@@ -38,6 +50,6 @@
 }
 #Button:hover{
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
-    -fx-background-color: #00e5ec;
+    -fx-background-color: #00d0ad;
     -fx-background-radius: 0;
 }

@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -77,6 +76,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button close;
     @FXML
+    private Button minimize;
+    @FXML
     private Button drag;
     @FXML
     private TextArea TextArea = new TextArea();
@@ -98,7 +99,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void initialize() {
         TextArea.setText(Constant.expression);
-        TextArea2.setText(Constant.answers);
+        TextArea2.setText(Constant.getAnswers());
     }
 
     @FXML
@@ -267,6 +268,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleClose(ActionEvent event) {
         Platform.exit();
+    }
+    
+    @FXML
+    private void handleMinimize(ActionEvent event){
+        Constant.stage.setIconified(true);
     }
 
     @FXML

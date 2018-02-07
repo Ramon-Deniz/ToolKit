@@ -1,4 +1,4 @@
-package calculator;
+package conversionMenu;
 
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -9,15 +9,13 @@ import javafx.scene.Scene;
  *
  * @author ramon
  */
-public class Calculator {
-
-    public Scene calcScene;
+public class ConversionMenu {
+    
+    public Scene scene;
     public static Parent root;
-
-    public Calculator() throws IOException {
+    
+    public ConversionMenu() throws IOException{
         root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        calcScene = new Scene(root);
+        scene = new Scene(root);
     }
-
 }
-
