@@ -1,4 +1,4 @@
-package conversionMenu;
+package Finance;
 
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -9,12 +9,11 @@ import javafx.scene.Scene;
  *
  * @author ramon
  */
-public class ConversionMenu {
-    
+public class Finance {
     public Scene scene;
     public static Parent root;
     
-    public ConversionMenu() throws IOException{
+    public Finance() throws IOException{
         root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         scene = new Scene(root);
     }

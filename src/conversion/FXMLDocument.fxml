@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="300.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="conversionMenu.FXMLDocumentController">
+<AnchorPane id="AnchorPane" onKeyPressed="#handleKeyPress" prefHeight="406.0" prefWidth="300.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="conversion.FXMLDocumentController">
   <children>
     <Button id="WindowButton" fx:id="back" alignment="CENTER" layoutX="0.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="36.0" prefWidth="50.0" text="⮌" textAlignment="RIGHT">
       <font>
@@ -53,7 +53,7 @@
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </ComboBox>
-    <TextArea id="Text" fx:id="text" layoutX="36.0" layoutY="186.0" mouseTransparent="false" prefHeight="36.0" prefWidth="215.0" promptText="" wrapText="false">
+    <TextArea id="Text" fx:id="inputText" layoutX="35.0" layoutY="186.0" mouseTransparent="true" prefHeight="36.0" prefWidth="200.0" promptText="" wrapText="false">
       <stylesheets>
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>

@@ -1,4 +1,4 @@
-package toolKit;
+package Finance;
 
 import ToolKitConstant.Constant;
 import java.net.URL;
@@ -11,11 +11,14 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 /**
+ * FXML Controller class
  *
  * @author ramon
  */
 public class FXMLDocumentController implements Initializable {
-
+    
+    @FXML
+    private Button back;
     @FXML
     private Button close;
     @FXML
@@ -23,28 +26,35 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button drag;
     @FXML
-    private Button calculator;
+    private Button fourK;
     @FXML
-    private Button conversion;
+    private Button annuity;
     @FXML
-    private Button finance;
-
+    private Button ammortization;
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
     }
-
+    
+     
+    @FXML
+    private void handleBack(ActionEvent event) {
+        Constant.stage.setScene(Constant.mainScene);
+    }
+    
     @FXML
     private void handleClose(ActionEvent event) {
         Platform.exit();
     }
-
+    
     @FXML
     private void handleMinimize(ActionEvent event) {
         Constant.stage.setIconified(true);
     }
-
+    
     @FXML
     private void handleDragPress(MouseEvent event) {
         double xOffset = Constant.stage.getX() - event.getScreenX();
@@ -54,19 +64,5 @@ public class FXMLDocumentController implements Initializable {
             Constant.stage.setY(mouseEvent.getScreenY() + yOffset);
         });
     }
-
-    @FXML
-    private void handleCalculatorAction(ActionEvent event){
-        Constant.stage.setScene(Constant.calculatorScene);
-    }
-
-    @FXML
-    private void handleConversion(ActionEvent event) {
-        Constant.stage.setScene(Constant.conversionScene);
-    }
     
-    @FXML
-    private void handleFinance(ActionEvent event){
-        Constant.stage.setScene(Constant.financeScene);
-    }
 }

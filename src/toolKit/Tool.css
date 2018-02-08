@@ -33,7 +33,7 @@
 }
 
 #Button{
-    -fx-background-color: #00c0a0;
+    -fx-background-color: #00a78b;
     -fx-background-radius: 0;
 }
 #Button:focused{
@@ -41,7 +41,7 @@
     -fx-background-radius: 0;
 }
 #WindowButton{
-    -fx-background-color: #00c0a0;
+    -fx-background-color: #00a78b;
     -fx-background-radius: 0;
 }
 #WindowButton:focused{
@@ -50,6 +50,6 @@
 }
 #Button:hover{
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
-    -fx-background-color: #00d0ad;
+    -fx-background-color: #00c3a2;
     -fx-background-radius: 0;
 }

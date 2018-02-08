@@ -1,17 +1,15 @@
 package ToolKitConstant;
 
+import Finance.Finance;
 import calculator.Calculator;
-import conversionMenu.ConversionMenu;
+import conversion.Conversion;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -26,15 +24,18 @@ public class Constant {
     public static String expression;
     public static List<String> answers;
     public static Scene calculatorScene;
-    public static Scene conversionMenuScene;
+    public static Scene conversionScene;
+    public static Scene financeScene;
     public static String apiData;
 
     public Constant(Stage stage, Scene scene) throws Exception {
         Constant.stage = stage;
         Calculator calc = new Calculator();
-        ConversionMenu cMenu = new ConversionMenu();
-        conversionMenuScene = cMenu.scene;
-        calculatorScene = calc.calcScene;
+        Conversion conv = new Conversion();
+        Finance fin = new Finance();
+        conversionScene = conv.scene;
+        calculatorScene = calc.scene;
+        financeScene = fin.scene;
         mainScene = scene;
         expression = "";
         answers = new ArrayList<>();

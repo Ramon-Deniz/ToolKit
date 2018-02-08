@@ -18,7 +18,7 @@
         <URL value="@Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="conversion" font="$x1" layoutX="50.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleConversion" prefHeight="50.0" prefWidth="200.0" text="Conversion" textAlignment="CENTER">
+    <Button id="Button" fx:id="conversion" font="$x1" layoutX="50.0" layoutY="144.0" mnemonicParsing="false" onAction="#handleConversion" prefHeight="50.0" prefWidth="200.0" text="Conversion" textAlignment="CENTER">
       <stylesheets>
         <URL value="@Tool.css" />
       </stylesheets>
@@ -40,6 +40,11 @@
       <font>
         <Font size="16.0" />
       </font>
+      <stylesheets>
+        <URL value="@Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="Button" fx:id="finance" font="$x1" layoutX="50.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleFinance" prefHeight="50.0" prefWidth="200.0" text="Finance" textAlignment="CENTER">
       <stylesheets>
         <URL value="@Tool.css" />
       </stylesheets>
