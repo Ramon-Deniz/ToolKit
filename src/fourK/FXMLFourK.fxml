@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="300.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="fourK.FXMLFourKController">
+  <children>
+    <Button id="WindowButton" fx:id="back" alignment="CENTER" layoutX="0.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="36.0" prefWidth="50.0" text="⮌" textAlignment="RIGHT">
+      <font>
+        <Font size="18.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="drag" layoutX="50.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onAction="#handleDragPress" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="180.0" text="">
+      <stylesheets>
+        <URL value="@../../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="close" layoutX="265.0" layoutY="0.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleClose" prefHeight="36.0" prefWidth="35.0" text="X">
+      <font>
+        <Font size="14.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="minimize" layoutX="230.0" layoutY="0.0" minWidth="25.0" mnemonicParsing="false" onAction="#handleMinimize" prefHeight="36.0" prefWidth="35.0" text="_">
+      <font>
+        <Font size="16.0" fx:id="x1" />
+      </font>
+      <stylesheets>
+        <URL value="@../../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Text layoutX="15.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\% to Contribute" />
+    <Text layoutX="15.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Annual Salary" />
+    <Text layoutX="15.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Annual salary" />
+    <Text layoutX="32.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Increase" />
+    <Text layoutX="170.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Age" />
+    <Text layoutX="170.0" layoutY="110.0" scaleX="1.0" scaleY="1.0000014583877497" strokeType="OUTSIDE" strokeWidth="0.0" text="Retirement Age" />
+    <Text layoutX="170.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current 401K" />
+    <Text layoutX="188.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="balance" />
+    <Text layoutX="170.0" layoutY="275.0" scaleX="1.0" scaleY="1.0000066081567769" strokeType="OUTSIDE" strokeWidth="0.0" text="Annual Rate" />
+    <Text layoutX="179.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="of Return" />
+    <Text layoutX="15.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer Match" />
+    <Text layoutX="15.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer Match" />
+    <Text layoutX="52.0" layoutY="290.0" scaleX="1.0" scaleY="1.0000066081567769" strokeType="OUTSIDE" strokeWidth="0.0" text="Ends" />
+    <Text layoutX="170.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inflation" />
+    <TextField fx:id="contribute" layoutX="15.0" layoutY="70.0" prefWidth="100.0" />
+    <TextField id="age" fx:id="currentAge" layoutX="170.0" layoutY="69.0" prefWidth="100.0" />
+    <TextField id="salary" fx:id="annualSalary" layoutX="15.0" layoutY="120.0" prefWidth="100.0" />
+    <TextField fx:id="retirementAge" layoutX="170.0" layoutY="120.0" prefWidth="100.0" />
+    <TextField fx:id="salaryIncrease" layoutX="15.0" layoutY="185.0" prefWidth="100.0" />
+    <TextField fx:id="currentBalance" layoutX="170.0" layoutY="185.0" prefWidth="100.0" />
+    <TextField fx:id="employerMatch" layoutX="15.0" layoutY="235.0" prefWidth="100.0" />
+    <TextField fx:id="inflation" layoutX="170.0" layoutY="235.0" prefWidth="100.0" />
+    <TextField fx:id="employerMatchEnds" layoutX="15.0" layoutY="300.0" prefWidth="100.0" />
+    <TextField fx:id="rateOfReturn" layoutX="170.0" layoutY="300.0" prefWidth="100.0" />
+    <Text layoutX="118.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
+    <Text layoutX="274.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
+    <Text layoutX="274.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
+    <Text layoutX="118.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
+    <Text layoutX="118.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
+    <Text layoutX="118.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
+    <Text layoutX="118.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
+    <Text layoutX="274.0" layoutY="135.0" scaleX="1.0023224852071007" scaleY="1.0000080665978317" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
+    <Text layoutX="274.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
+    <Button id="Button" fx:id="calculate" layoutX="24.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleCalculate" prefHeight="36.0" text="Calculate" />
+    <Text font="$x1" layoutX="118.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
+    <TextField id="Text" fx:id="result" layoutX="128.0" layoutY="340.0" prefHeight="36.0" prefWidth="158.3525390625" />
+  </children>
+  <stylesheets>
+    <URL value="@../toolKit/Tool.css" />
+  </stylesheets>
+</AnchorPane>

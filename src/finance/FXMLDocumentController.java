@@ -1,4 +1,4 @@
-package Finance;
+package finance;
 
 import ToolKitConstant.Constant;
 import java.net.URL;
@@ -30,7 +30,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button annuity;
     @FXML
-    private Button ammortization;
+    private Button loan;
     /**
      * Initializes the controller class.
      */
@@ -65,4 +65,18 @@ public class FXMLDocumentController implements Initializable {
         });
     }
     
+    @FXML
+    private void handleFourK(ActionEvent event){
+        Constant.stage.setScene(Constant.fourKScene);
+    }
+    
+    @FXML
+    private void handleAnnuity(ActionEvent event){
+        
+    }
+    
+    @FXML
+    private void handleLoan(ActionEvent event){
+        
+    }
 }

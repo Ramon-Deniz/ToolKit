@@ -1,8 +1,9 @@
 package ToolKitConstant;
 
-import Finance.Finance;
+import finance.Finance;
 import calculator.Calculator;
 import conversion.Conversion;
+import fourK.FourK;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -26,6 +27,7 @@ public class Constant {
     public static Scene calculatorScene;
     public static Scene conversionScene;
     public static Scene financeScene;
+    public static Scene fourKScene;
     public static String apiData;
 
     public Constant(Stage stage, Scene scene) throws Exception {
@@ -33,9 +35,11 @@ public class Constant {
         Calculator calc = new Calculator();
         Conversion conv = new Conversion();
         Finance fin = new Finance();
+        FourK fourK = new FourK();
         conversionScene = conv.scene;
         calculatorScene = calc.scene;
         financeScene = fin.scene;
+        fourKScene = fourK.scene;
         mainScene = scene;
         expression = "";
         answers = new ArrayList<>();
