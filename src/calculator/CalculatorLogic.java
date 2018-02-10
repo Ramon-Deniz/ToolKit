@@ -1,5 +1,6 @@
 package calculator;
 
+import ToolKitConstant.Constant;
 import java.util.List;
 import ToolKitConstant.InvalidExpressionException;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class CalculatorLogic {
             format(expression);
             solve(expression);
             stringExpression = expression.get(0);
-            if(stringExpression.length()-stringExpression.replaceAll("\\.", "").length()>1){
+            if (stringExpression.length() - stringExpression.replaceAll("\\.", "").length() > 1) {
                 throw new InvalidExpressionException();
             }
         } catch (InvalidExpressionException e) {
@@ -37,7 +38,7 @@ public class CalculatorLogic {
         return stringExpression;
     }
 
-    private static void format(List<String> expression) throws InvalidExpressionException{
+    private static void format(List<String> expression) throws InvalidExpressionException {
         if (expression.get(0).equals("-")) {
             expression.remove(0);
             expression.set(0, "-" + expression.get(0));
@@ -61,7 +62,7 @@ public class CalculatorLogic {
         solvePar(expression);
         solveFactorial(expression);
         solveOperand(expression, "^");
-        
+
         int multiplyInstance = firstInstance(expression, "*", 0);
         int divideInstance = firstInstance(expression, "/", 0);
         if (multiplyInstance < divideInstance) {
@@ -71,7 +72,7 @@ public class CalculatorLogic {
             solveOperand(expression, "/");
             solveOperand(expression, "*");
         }
-        
+
         solveOperand(expression, "+");
         solveOperand(expression, "-");
         return expression;

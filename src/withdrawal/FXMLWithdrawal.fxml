@@ -8,17 +8,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="300.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="finance.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="300.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="withdrawal.FXMLWithdrawalController">
   <children>
     <Button id="WindowButton" fx:id="back" alignment="CENTER" layoutX="0.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="36.0" prefWidth="50.0" text="⮌" textAlignment="RIGHT">
       <font>
-        <Font size="18.0" fx:id="x1" />
+        <Font size="18.0" />
       </font>
       <stylesheets>
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="WindowButton" fx:id="drag" layoutX="50.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onAction="#handleDragPress" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="180.0" text="">
+    <Button id="WindowButton" fx:id="drag" layoutX="50.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="180.0" text="">
       <stylesheets>
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>
@@ -39,17 +39,6 @@
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="fourK" font="$x1" layoutX="50.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleFourK" prefHeight="50.0" prefWidth="200.0" text="401k">
-      <stylesheets>
-        <URL value="@../toolKit/Tool.css" />
-      </stylesheets>
-    </Button>
-    <Button id="Button" fx:id="withdrawal" font="$x1" layoutX="50.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleWithdrawal" prefHeight="50.0" prefWidth="200.0" text="Withdrawal">
-      <stylesheets>
-        <URL value="@../toolKit/Tool.css" />
-      </stylesheets>
-    </Button>
-    <Button id="Button" font="$x1" layoutX="50.0" layoutY="244.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Loan" />
   </children>
   <stylesheets>
     <URL value="@../toolKit/Tool.css" />

@@ -14,7 +14,7 @@ import javafx.collections.ObservableList;
 public class ConversionLogic {
 
     public static ObservableList<String> currencyOptions = FXCollections.observableArrayList("USD",
-            "EUR", "MXN", "THB", "KRW","ZAR");
+            "EUR", "AUD", "MXN", "CAD", "CNY", "JPY", "THB", "KRW", "ZAR");
     public static ObservableList<String> lengthOptions = FXCollections.observableArrayList("Feet", "Inches",
             "Meters", "Centimeters", "Yards", "Miles");
     public static ObservableList<String> volumeOptions = FXCollections.observableArrayList("Gallons",
@@ -131,7 +131,7 @@ public class ConversionLogic {
                 return Double.parseDouble(apiData.substring(start, i));
             }
         }
-        throw new Exception();
+        throw new Exception("Currency rate error");
     }
 
     /**
@@ -150,6 +150,8 @@ public class ConversionLogic {
                 return "mm";
             case "Milliliters":
                 return "mL";
+            case "Kilograms":
+                return "Kg";
             default:
                 break;
         }

@@ -18,7 +18,7 @@
         <URL value="@../../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="WindowButton" fx:id="drag" layoutX="50.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onAction="#handleDragPress" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="180.0" text="">
+    <Button id="WindowButton" fx:id="drag" layoutX="50.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="180.0" text="">
       <stylesheets>
         <URL value="@../../toolKit/Tool.css" />
       </stylesheets>
@@ -53,16 +53,16 @@
     <Text layoutX="15.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer Match" />
     <Text layoutX="52.0" layoutY="290.0" scaleX="1.0" scaleY="1.0000066081567769" strokeType="OUTSIDE" strokeWidth="0.0" text="Ends" />
     <Text layoutX="170.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inflation" />
-    <TextField fx:id="contribute" layoutX="15.0" layoutY="70.0" prefWidth="100.0" />
-    <TextField id="age" fx:id="currentAge" layoutX="170.0" layoutY="69.0" prefWidth="100.0" />
-    <TextField id="salary" fx:id="annualSalary" layoutX="15.0" layoutY="120.0" prefWidth="100.0" />
-    <TextField fx:id="retirementAge" layoutX="170.0" layoutY="120.0" prefWidth="100.0" />
-    <TextField fx:id="salaryIncrease" layoutX="15.0" layoutY="185.0" prefWidth="100.0" />
-    <TextField fx:id="currentBalance" layoutX="170.0" layoutY="185.0" prefWidth="100.0" />
-    <TextField fx:id="employerMatch" layoutX="15.0" layoutY="235.0" prefWidth="100.0" />
-    <TextField fx:id="inflation" layoutX="170.0" layoutY="235.0" prefWidth="100.0" />
-    <TextField fx:id="employerMatchEnds" layoutX="15.0" layoutY="300.0" prefWidth="100.0" />
-    <TextField fx:id="rateOfReturn" layoutX="170.0" layoutY="300.0" prefWidth="100.0" />
+    <TextField fx:id="contribute" layoutX="15.0" layoutY="70.0" prefWidth="100.0" text="5" />
+    <TextField id="age" fx:id="currentAge" layoutX="170.0" layoutY="69.0" prefWidth="100.0" text="30" />
+    <TextField id="salary" fx:id="annualSalary" layoutX="15.0" layoutY="120.0" prefWidth="100.0" text="40000" />
+    <TextField fx:id="retirementAge" layoutX="170.0" layoutY="120.0" prefWidth="100.0" text="65" />
+    <TextField fx:id="salaryIncrease" layoutX="15.0" layoutY="185.0" prefWidth="100.0" text="2" />
+    <TextField fx:id="currentBalance" layoutX="170.0" layoutY="185.0" prefWidth="100.0" text="0" />
+    <TextField fx:id="employerMatch" layoutX="15.0" layoutY="235.0" prefWidth="100.0" text="100" />
+    <TextField fx:id="inflation" layoutX="170.0" layoutY="235.0" prefWidth="100.0" text="3" />
+    <TextField fx:id="employerMatchEnds" layoutX="15.0" layoutY="300.0" prefWidth="100.0" text="3" />
+    <TextField fx:id="rateOfReturn" layoutX="170.0" layoutY="300.0" prefWidth="100.0" text="6.5" />
     <Text layoutX="118.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
     <Text layoutX="274.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
     <Text layoutX="274.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
@@ -70,11 +70,10 @@
     <Text layoutX="118.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
     <Text layoutX="118.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
     <Text layoutX="118.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
-    <Text layoutX="274.0" layoutY="135.0" scaleX="1.0023224852071007" scaleY="1.0000080665978317" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
-    <Text layoutX="274.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
+    <Text layoutX="274.0" layoutY="201.0" scaleX="1.0023224852071007" scaleY="1.0000080665978317" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
     <Button id="Button" fx:id="calculate" layoutX="24.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleCalculate" prefHeight="36.0" text="Calculate" />
-    <Text font="$x1" layoutX="118.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
-    <TextField id="Text" fx:id="result" layoutX="128.0" layoutY="340.0" prefHeight="36.0" prefWidth="158.3525390625" />
+    <Text font="$x1" layoutX="119.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
+    <TextField id="Text" fx:id="result" layoutX="131.0" layoutY="340.0" prefHeight="36.0" prefWidth="158.3525390625" />
   </children>
   <stylesheets>
     <URL value="@../toolKit/Tool.css" />

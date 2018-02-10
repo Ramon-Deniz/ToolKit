@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import withdrawal.Withdrawal;
 
 /**
  *
@@ -28,6 +29,7 @@ public class Constant {
     public static Scene conversionScene;
     public static Scene financeScene;
     public static Scene fourKScene;
+    public static Scene withdrawScene;
     public static String apiData;
 
     public Constant(Stage stage, Scene scene) throws Exception {
@@ -36,10 +38,12 @@ public class Constant {
         Conversion conv = new Conversion();
         Finance fin = new Finance();
         FourK fourK = new FourK();
+        Withdrawal withdraw = new Withdrawal();
         conversionScene = conv.scene;
         calculatorScene = calc.scene;
         financeScene = fin.scene;
         fourKScene = fourK.scene;
+        withdrawScene = withdraw.scene;
         mainScene = scene;
         expression = "";
         answers = new ArrayList<>();

@@ -28,7 +28,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button fourK;
     @FXML
-    private Button annuity;
+    private Button withdrawal;
     @FXML
     private Button loan;
     /**
@@ -71,8 +71,8 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
-    private void handleAnnuity(ActionEvent event){
-        
+    private void handleWithdrawal(ActionEvent event){
+        Constant.stage.setScene(Constant.withdrawScene);
     }
     
     @FXML
