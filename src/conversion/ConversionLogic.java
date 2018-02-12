@@ -25,6 +25,8 @@ public class ConversionLogic {
     private static final Map<String, Double> LENGTH = getLengthRates();
     private static final Map<String, Double> VOLUME = getVolumeRates();
     private static final Map<String, Double> WEIGHT = getWeightRates();
+    
+    private static final Map<String, String> ABBREVIATIONS = getAbbreviations();
 
     /**
      * Returns an ObservableList of type string that excludes one element from
@@ -62,73 +64,50 @@ public class ConversionLogic {
         } catch (Exception e) {
             return "";
         }
-        String result = "";
+        double finalUnit = 0;
+        double initialUnit = 0;
+        String result;
         if (currencyOptions.contains(unitInitial) && currencyOptions.contains(unitFinal)) {
             try {
-                result = convertCurrency(unitInitial, unitFinal, number);
+                finalUnit = getCurrencyRate(unitFinal);
+                initialUnit = getCurrencyRate(unitInitial);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else if (lengthOptions.contains(unitInitial) && lengthOptions.contains(unitFinal)) {
-            double finalUnit = LENGTH.get(unitFinal);
-            double initialUnit = LENGTH.get(unitInitial);
-            finalUnit /= initialUnit;
-            finalUnit *= Double.parseDouble(number);
-            result = "" + finalUnit;
+            finalUnit = LENGTH.get(unitFinal);
+            initialUnit = LENGTH.get(unitInitial);
         } else if (volumeOptions.contains(unitInitial) && volumeOptions.contains(unitFinal)) {
-            double finalUnit = VOLUME.get(unitFinal);
-            double initialUnit = VOLUME.get(unitInitial);
-            finalUnit /= initialUnit;
-            finalUnit *= Double.parseDouble(number);
-            result = "" + finalUnit;
+            finalUnit = VOLUME.get(unitFinal);
+            initialUnit = VOLUME.get(unitInitial);
         } else if (weightOptions.contains(unitInitial) && weightOptions.contains(unitFinal)) {
-            double finalUnit = WEIGHT.get(unitFinal);
-            double initialUnit = WEIGHT.get(unitInitial);
-            finalUnit /= initialUnit;
-            finalUnit *= Double.parseDouble(number);
-            result = "" + finalUnit;
+            finalUnit = WEIGHT.get(unitFinal);
+            initialUnit = WEIGHT.get(unitInitial);
         }
+        finalUnit /= initialUnit;
+        finalUnit *= Double.parseDouble(number);
+        result = "" + finalUnit;
         DecimalFormat pattern = new DecimalFormat("###,###,###.###");
-        result = pattern.format(Double.parseDouble(result));
-        return result;
-    }
-
-    /**
-     * Converts from one currency to another and returns that value
-     *
-     * @param currency
-     * @param convertTo
-     * @param amount
-     * @return
-     * @throws Exception
-     */
-    private static String convertCurrency(String currency, String convertTo, String amount) throws Exception {
-        double initialRate = getCurrencyRate(Constant.apiData, currency);
-        double finalRate = getCurrencyRate(Constant.apiData, convertTo);
-        double money = Double.parseDouble(amount);
-        finalRate /= initialRate;
-        money *= finalRate;
-        return "" + money;
+        return pattern.format(Double.parseDouble(result));
     }
 
     /**
      * Returns the current rate of a specific currency
      *
-     * @param apiData
+     * @param Constant.apiData
      * @param currency
      * @return
      * @throws Exception
      */
-    private static double getCurrencyRate(String apiData, String currency) throws Exception {
+    private static double getCurrencyRate(String currency) throws Exception {
         if (currency.equals("EUR")) {
             return 1;
         }
         String valid = ".0123456789";
-        double rate = 0;
-        int start = apiData.indexOf(currency) + 5;
-        for (int i = start; i < apiData.length(); i++) {
-            if (valid.indexOf(apiData.charAt(i)) == -1) {
-                return Double.parseDouble(apiData.substring(start, i));
+        int start = Constant.apiData.indexOf(currency) + 5;
+        for (int i = start; i < Constant.apiData.length(); i++) {
+            if (valid.indexOf(Constant.apiData.charAt(i)) == -1) {
+                return Double.parseDouble(Constant.apiData.substring(start, i));
             }
         }
         throw new Exception("Currency rate error");
@@ -141,19 +120,8 @@ public class ConversionLogic {
      * @return
      */
     public static String getAbbreviation(String units) {
-        switch (units) {
-            case "Centimeters":
-                return "cm";
-            case "Fluid Ounces":
-                return "fl oz";
-            case "Millimeters":
-                return "mm";
-            case "Milliliters":
-                return "mL";
-            case "Kilograms":
-                return "Kg";
-            default:
-                break;
+        if(ABBREVIATIONS.containsKey(units)){
+            return ABBREVIATIONS.get(units);
         }
         return units;
     }
@@ -203,5 +171,15 @@ public class ConversionLogic {
         weightRates.put("Ounces", 0.035274);
         weightRates.put("Tons", 0.00000110231);
         return weightRates;
+    }
+    
+    private static Map<String, String> getAbbreviations(){
+        Map<String, String> abr = new HashMap<>();
+        abr.put("Centimeters", "cm");
+        abr.put("Fluid Ounces", "fl oz");
+        abr.put("Millimeters", "mm");
+        abr.put("Milliliters", "mL");
+        abr.put("Kilograms", "Kg");
+        return abr;
     }
 }
