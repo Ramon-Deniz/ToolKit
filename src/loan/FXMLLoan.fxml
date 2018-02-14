@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="300.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="loan.FXMLLoanController">
+  <children>
+    <Button id="WindowButton" fx:id="back" alignment="CENTER" layoutX="0.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="36.0" prefWidth="50.0" text="⮌" textAlignment="RIGHT">
+      <font>
+        <Font size="18.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="drag" layoutX="50.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="180.0" text="">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="close" layoutX="265.0" layoutY="0.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleClose" prefHeight="36.0" prefWidth="35.0" text="X">
+      <font>
+        <Font size="14.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="minimize" layoutX="230.0" layoutY="0.0" minWidth="25.0" mnemonicParsing="false" onAction="#handleMinimize" prefHeight="36.0" prefWidth="35.0" text="_">
+      <font>
+        <Font size="16.0" fx:id="x1" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Text layoutX="55.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loan" />
+    <TextField id="Text" fx:id="loanAmount" layoutX="134.0" layoutY="64.0" prefHeight="35.999900000002526" prefWidth="149.9998779296875" text="7500" />
+    <TextField id="Text" fx:id="months" layoutX="134.0" layoutY="150.0" prefHeight="36.0" prefWidth="64.0" text="48" />
+    <Text layoutX="46.0" layoutY="177.0" scaleX="1.0" scaleY="0.9999919334021683" strokeType="OUTSIDE" strokeWidth="0.0" text="Months:" />
+    <TextField id="Text" fx:id="interest" layoutX="134.0" layoutY="235.0" prefHeight="36.0" prefWidth="67.5" text="3.98" />
+    <Text layoutX="72.0" layoutY="261.0" scaleX="1.0076956541885262" scaleY="0.9999999999126647" strokeType="OUTSIDE" strokeWidth="0.0" text="APY:" />
+    <Text layoutX="210.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" />
+    <Button id="Button" fx:id="calculate" layoutX="15.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleCalculate" prefHeight="36.0" prefWidth="83.0" text="Calculate" />
+    <TextField id="Text" fx:id="result" layoutX="134.0" layoutY="310.0" prefHeight="36.0" prefWidth="145.0" text="169.38" />
+    <Text font="$x1" layoutX="122.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
+    <Text font="$x1" layoutX="122.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$" />
+    <Text layoutX="140.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Payment" />
+    <Text layoutX="43.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount:" />
+    <Line endX="113.0" endY="-27.0" layoutX="166.0" layoutY="123.0" startX="-26.0" startY="-27.0" />
+    <Line endX="26.0" endY="-21.0" layoutX="166.0" layoutY="203.0" startX="-26.0" startY="-21.0" />
+    <Line endX="35.0" endY="-17.0" layoutX="166.0" layoutY="284.0" startX="-26.0" startY="-17.0" />
+    <Line endX="113.0" endY="-5.0" layoutX="166.0" layoutY="347.0" startX="-26.0" startY="-5.0" />
+  </children>
+  <stylesheets>
+    <URL value="@../toolKit/Tool.css" />
+  </stylesheets>
+</AnchorPane>

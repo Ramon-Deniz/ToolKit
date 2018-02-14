@@ -1,7 +1,6 @@
-package withdrawal;
+package loan;
 
 import ToolKitConstant.Constant;
-import finance.Finance;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -11,13 +10,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import withdrawal.WithdrawalLogic;
 
 /**
  * FXML Controller class
  *
  * @author ramon
  */
-public class FXMLWithdrawalController implements Initializable {
+public class FXMLLoanController implements Initializable {
 
     @FXML
     private Button back;
@@ -28,7 +28,7 @@ public class FXMLWithdrawalController implements Initializable {
     @FXML
     private Button drag;
     @FXML
-    private TextField initialAmount;
+    private TextField loanAmount;
     @FXML
     private TextField months;
     @FXML
@@ -70,10 +70,10 @@ public class FXMLWithdrawalController implements Initializable {
             Constant.stage.setY(mouseEvent.getScreenY() + yOffset);
         });
     }
-
+    
     @FXML
-    private void handleCalculate(ActionEvent event) {
-        result.setText(WithdrawalLogic.calculate(initialAmount.getText(), months.getText(), interest.getText()));
+    private void handleCalculate(ActionEvent event){
+        result.setText(WithdrawalLogic.calculate(loanAmount.getText(), months.getText(), interest.getText()));
     }
 
 }

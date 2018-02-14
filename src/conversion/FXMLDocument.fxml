@@ -58,7 +58,6 @@
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </TextArea>
-    <Line endX="100.0" endY="-50.0" layoutX="148.0" layoutY="271.0" startX="-95.0" startY="-50.0" />
     <ComboBox id="Button" fx:id="initialUnits" disable="true" layoutX="50.0" layoutY="124.0" onAction="#handleInitialUnits" opacity="1.0" prefHeight="36.0" prefWidth="200.0" promptText="Units to Convert">
       <items>
         <FXCollections fx:factory="observableArrayList">

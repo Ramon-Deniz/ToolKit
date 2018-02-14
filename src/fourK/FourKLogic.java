@@ -27,7 +27,7 @@ public class FourKLogic {
             }
             matchEnd *= match;
             contribute += matchEnd;
-            result += calculate(contribute, retire, salary, salaryIncrease, balance, rateOfReturn)*Math.pow(1.0-inflation, retire);
+            result += calculate(contribute, retire, salary, salaryIncrease, balance, rateOfReturn, inflation);
         } catch (Exception e) {
             return "Invalid Input";
         }
@@ -56,13 +56,13 @@ public class FourKLogic {
     }
 
     private static double calculate(double contribute, int years, double salary, double salaryIncrease,
-            double balance, double rate) {
+            double balance, double rate, double inflation) {
         if (years == 0) {
             return balance;
         }
         balance += (salary * contribute);
-        balance *= (1.0 + rate);
+        balance *= (1.0 + rate)*(1.0-inflation);
         salary *= (1.0 + salaryIncrease);
-        return calculate(contribute, years - 1, salary, salaryIncrease, balance, rate);
+        return calculate(contribute, years - 1, salary, salaryIncrease, balance, rate, inflation);
     }
 }

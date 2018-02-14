@@ -14,9 +14,9 @@ import javafx.collections.ObservableList;
 public class ConversionLogic {
 
     public static ObservableList<String> currencyOptions = FXCollections.observableArrayList("USD",
-            "EUR", "AUD", "MXN", "CAD", "CNY", "JPY", "THB", "KRW", "ZAR");
+            "EUR", "GBP","AUD", "MXN", "CAD", "CNY", "JPY", "THB", "CHF", "KRW", "ZAR", "RUB");
     public static ObservableList<String> lengthOptions = FXCollections.observableArrayList("Feet", "Inches",
-            "Meters", "Centimeters", "Yards", "Miles");
+            "Meters", "Centimeters", "Millimeters", "Yards", "Miles");
     public static ObservableList<String> volumeOptions = FXCollections.observableArrayList("Gallons",
             "Liters", "Pints", "Cups", "Milliliters", "Fluid Ounces", "Quarts");
     public static ObservableList<String> weightOptions = FXCollections.observableArrayList("Pounds",
@@ -87,7 +87,7 @@ public class ConversionLogic {
         finalUnit /= initialUnit;
         finalUnit *= Double.parseDouble(number);
         result = "" + finalUnit;
-        DecimalFormat pattern = new DecimalFormat("###,###,###.###");
+        DecimalFormat pattern = new DecimalFormat("###,###,###.####");
         return pattern.format(Double.parseDouble(result));
     }
 

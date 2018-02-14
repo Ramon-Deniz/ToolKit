@@ -77,6 +77,6 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleLoan(ActionEvent event){
-        
+        Constant.stage.setScene(Constant.loanScene);
     }
 }
