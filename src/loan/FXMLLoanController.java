@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.json.JSONException;
 import withdrawal.WithdrawalLogic;
 
 /**
@@ -44,6 +45,14 @@ public class FXMLLoanController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        try {
+            loanAmount.setText(Constant.saved.getJSONObject("loanInput").getString("loanAmount"));
+            months.setText(Constant.saved.getJSONObject("loanInput").getString("months"));
+            interest.setText(Constant.saved.getJSONObject("loanInput").getString("interest"));
+            result.setText(Constant.saved.getJSONObject("loanInput").getString("result"));
+        } catch (JSONException e) {
+            result.setText("Save error");
+        }
     }
 
     @FXML
@@ -53,6 +62,7 @@ public class FXMLLoanController implements Initializable {
 
     @FXML
     private void handleClose(ActionEvent event) {
+        Constant.save();
         Platform.exit();
     }
 
@@ -70,10 +80,21 @@ public class FXMLLoanController implements Initializable {
             Constant.stage.setY(mouseEvent.getScreenY() + yOffset);
         });
     }
-    
+
     @FXML
-    private void handleCalculate(ActionEvent event){
+    private void handleCalculate(ActionEvent event) {
         result.setText(WithdrawalLogic.calculate(loanAmount.getText(), months.getText(), interest.getText()));
+        updateJSON();
+    }
+
+    private void updateJSON() {
+        try {
+            Constant.saved.getJSONObject("loanInput").put("loanAmount", loanAmount.getText());
+            Constant.saved.getJSONObject("loanInput").put("months", months.getText());
+            Constant.saved.getJSONObject("loanInput").put("interest", interest.getText());
+            Constant.saved.getJSONObject("loanInput").put("result", result.getText());
+        } catch (JSONException e) {
+        }
     }
 
 }

@@ -93,7 +93,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         TextArea.setText("Type in Expression");
-        TextArea2.setText(" ");
+        TextArea2.setText(Constant.getAnswers());
     }
 
     @FXML
@@ -267,11 +267,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleClose(ActionEvent event) {
+        Constant.save();
         Platform.exit();
     }
-    
+
     @FXML
-    private void handleMinimize(ActionEvent event){
+    private void handleMinimize(ActionEvent event) {
         Constant.stage.setIconified(true);
     }
 

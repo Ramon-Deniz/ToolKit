@@ -32,11 +32,12 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+
     }
 
     @FXML
     private void handleClose(ActionEvent event) {
+        Constant.save();
         Platform.exit();
     }
 
@@ -56,7 +57,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void handleCalculatorAction(ActionEvent event){
+    private void handleCalculatorAction(ActionEvent event) {
         Constant.stage.setScene(Constant.calculatorScene);
     }
 
@@ -64,9 +65,9 @@ public class FXMLDocumentController implements Initializable {
     private void handleConversion(ActionEvent event) {
         Constant.stage.setScene(Constant.conversionScene);
     }
-    
+
     @FXML
-    private void handleFinance(ActionEvent event){
+    private void handleFinance(ActionEvent event) {
         Constant.stage.setScene(Constant.financeScene);
     }
 }

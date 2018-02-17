@@ -7,11 +7,10 @@ import java.text.DecimalFormat;
  * @author ramon
  */
 public class WithdrawalLogic {
-    
+
     //
     //Withdrawals and loans work the same
     //
-    
     public static String calculate(String initialAmount, String monthsAmount, String rateOfReturnAmount) {
         String result = "Invalid";
         try {

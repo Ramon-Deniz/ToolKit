@@ -1,6 +1,5 @@
 package calculator;
 
-import ToolKitConstant.Constant;
 import java.util.List;
 import ToolKitConstant.InvalidExpressionException;
 import java.util.ArrayList;

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.json.JSONException;
 
 /**
  *
@@ -14,7 +15,7 @@ import javafx.collections.ObservableList;
 public class ConversionLogic {
 
     public static ObservableList<String> currencyOptions = FXCollections.observableArrayList("USD",
-            "EUR", "GBP","AUD", "MXN", "CAD", "CNY", "JPY", "THB", "CHF", "KRW", "ZAR", "RUB");
+            "EUR", "GBP", "AUD", "MXN", "CAD", "CNY", "JPY", "THB", "CHF", "KRW", "ZAR", "RUB");
     public static ObservableList<String> lengthOptions = FXCollections.observableArrayList("Feet", "Inches",
             "Meters", "Centimeters", "Millimeters", "Yards", "Miles");
     public static ObservableList<String> volumeOptions = FXCollections.observableArrayList("Gallons",
@@ -25,7 +26,7 @@ public class ConversionLogic {
     private static final Map<String, Double> LENGTH = getLengthRates();
     private static final Map<String, Double> VOLUME = getVolumeRates();
     private static final Map<String, Double> WEIGHT = getWeightRates();
-    
+
     private static final Map<String, String> ABBREVIATIONS = getAbbreviations();
 
     /**
@@ -72,7 +73,7 @@ public class ConversionLogic {
                 finalUnit = getCurrencyRate(unitFinal);
                 initialUnit = getCurrencyRate(unitInitial);
             } catch (Exception e) {
-                e.printStackTrace();
+                return "Error with API";
             }
         } else if (lengthOptions.contains(unitInitial) && lengthOptions.contains(unitFinal)) {
             finalUnit = LENGTH.get(unitFinal);
@@ -87,30 +88,22 @@ public class ConversionLogic {
         finalUnit /= initialUnit;
         finalUnit *= Double.parseDouble(number);
         result = "" + finalUnit;
-        DecimalFormat pattern = new DecimalFormat("###,###,###.####");
+        DecimalFormat pattern = new DecimalFormat("###,###,###.##");
         return pattern.format(Double.parseDouble(result));
     }
 
     /**
      * Returns the current rate of a specific currency
      *
-     * @param Constant.apiData
      * @param currency
      * @return
-     * @throws Exception
+     * @throws JSONException
      */
-    private static double getCurrencyRate(String currency) throws Exception {
+    private static double getCurrencyRate(String currency) throws JSONException {
         if (currency.equals("EUR")) {
             return 1;
         }
-        String valid = ".0123456789";
-        int start = Constant.apiData.indexOf(currency) + 5;
-        for (int i = start; i < Constant.apiData.length(); i++) {
-            if (valid.indexOf(Constant.apiData.charAt(i)) == -1) {
-                return Double.parseDouble(Constant.apiData.substring(start, i));
-            }
-        }
-        throw new Exception("Currency rate error");
+        return Constant.apiData.getJSONObject("rates").getDouble(currency);
     }
 
     /**
@@ -120,7 +113,7 @@ public class ConversionLogic {
      * @return
      */
     public static String getAbbreviation(String units) {
-        if(ABBREVIATIONS.containsKey(units)){
+        if (ABBREVIATIONS.containsKey(units)) {
             return ABBREVIATIONS.get(units);
         }
         return units;
@@ -172,8 +165,8 @@ public class ConversionLogic {
         weightRates.put("Tons", 0.00000110231);
         return weightRates;
     }
-    
-    private static Map<String, String> getAbbreviations(){
+
+    private static Map<String, String> getAbbreviations() {
         Map<String, String> abr = new HashMap<>();
         abr.put("Centimeters", "cm");
         abr.put("Fluid Ounces", "fl oz");

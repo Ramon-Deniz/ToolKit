@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.json.JSONException;
 
 /**
  * FXML Controller class
@@ -58,6 +59,21 @@ public class FXMLFourKController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        try {
+            contribute.setText(Constant.saved.getJSONObject("fourKInput").getString("contribute"));
+            currentAge.setText(Constant.saved.getJSONObject("fourKInput").getString("contribute"));
+            annualSalary.setText(Constant.saved.getJSONObject("fourKInput").getString("annualSalary"));
+            retirementAge.setText(Constant.saved.getJSONObject("fourKInput").getString("retirementAge"));
+            salaryIncrease.setText(Constant.saved.getJSONObject("fourKInput").getString("salaryIncrease"));
+            currentBalance.setText(Constant.saved.getJSONObject("fourKInput").getString("currentBalance"));
+            employerMatch.setText(Constant.saved.getJSONObject("fourKInput").getString("employerMatch"));
+            inflation.setText(Constant.saved.getJSONObject("fourKInput").getString("inflation"));
+            employerMatchEnds.setText(Constant.saved.getJSONObject("fourKInput").getString("employerMatchEnds"));
+            rateOfReturn.setText(Constant.saved.getJSONObject("fourKInput").getString("rateOfReturn"));
+            result.setText(Constant.saved.getJSONObject("fourKInput").getString("result"));
+        } catch (JSONException e) {
+            result.setText("Save error");
+        }
     }
 
     @FXML
@@ -67,6 +83,7 @@ public class FXMLFourKController implements Initializable {
 
     @FXML
     private void handleClose(ActionEvent event) {
+        Constant.save();
         Platform.exit();
     }
 
@@ -92,6 +109,24 @@ public class FXMLFourKController implements Initializable {
                 inflation.getText(), employerMatchEnds.getText(), rateOfReturn.getText());
         DecimalFormat pattern = new DecimalFormat("###,###,###.###");
         result.setText(pattern.format(Double.parseDouble(amount)));
+        updateJSON();
     }
 
+    private void updateJSON() {
+        try {
+            Constant.saved.getJSONObject("fourKInput").put("contribute", contribute.getText());
+            Constant.saved.getJSONObject("fourKInput").put("currentAge", currentAge.getText());
+            Constant.saved.getJSONObject("fourKInput").put("annualSalary", annualSalary.getText());
+            Constant.saved.getJSONObject("fourKInput").put("retirementAge", retirementAge.getText());
+            Constant.saved.getJSONObject("fourKInput").put("salaryIncrease", salaryIncrease.getText());
+            Constant.saved.getJSONObject("fourKInput").put("currentBalance", currentBalance.getText());
+            Constant.saved.getJSONObject("fourKInput").put("employerMatch", employerMatch.getText());
+            Constant.saved.getJSONObject("fourKInput").put("inflation", inflation.getText());
+            Constant.saved.getJSONObject("fourKInput").put("employerMatchEnds", employerMatchEnds.getText());
+            Constant.saved.getJSONObject("fourKInput").put("rateOfReturn", rateOfReturn.getText());
+            Constant.saved.getJSONObject("fourKInput").put("result", result.getText());
+        } catch (JSONException e) {
+            System.out.println("Test");
+        }
+    }
 }

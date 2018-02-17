@@ -16,7 +16,7 @@ import javafx.scene.input.MouseEvent;
  * @author ramon
  */
 public class FXMLDocumentController implements Initializable {
-    
+
     @FXML
     private Button back;
     @FXML
@@ -31,6 +31,7 @@ public class FXMLDocumentController implements Initializable {
     private Button withdrawal;
     @FXML
     private Button loan;
+
     /**
      * Initializes the controller class.
      */
@@ -38,23 +39,23 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
-     
+
     @FXML
     private void handleBack(ActionEvent event) {
         Constant.stage.setScene(Constant.mainScene);
     }
-    
+
     @FXML
     private void handleClose(ActionEvent event) {
+        Constant.save();
         Platform.exit();
     }
-    
+
     @FXML
     private void handleMinimize(ActionEvent event) {
         Constant.stage.setIconified(true);
     }
-    
+
     @FXML
     private void handleDragPress(MouseEvent event) {
         double xOffset = Constant.stage.getX() - event.getScreenX();
@@ -64,19 +65,19 @@ public class FXMLDocumentController implements Initializable {
             Constant.stage.setY(mouseEvent.getScreenY() + yOffset);
         });
     }
-    
+
     @FXML
-    private void handleFourK(ActionEvent event){
+    private void handleFourK(ActionEvent event) {
         Constant.stage.setScene(Constant.fourKScene);
     }
-    
+
     @FXML
-    private void handleWithdrawal(ActionEvent event){
+    private void handleWithdrawal(ActionEvent event) {
         Constant.stage.setScene(Constant.withdrawScene);
     }
-    
+
     @FXML
-    private void handleLoan(ActionEvent event){
+    private void handleLoan(ActionEvent event) {
         Constant.stage.setScene(Constant.loanScene);
     }
 }

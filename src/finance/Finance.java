@@ -10,10 +10,11 @@ import javafx.scene.Scene;
  * @author ramon
  */
 public class Finance {
-    public static Scene scene;
+
+    public Scene scene;
     public static Parent root;
-    
-    public Finance() throws IOException{
+
+    public Finance() throws IOException {
         root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         scene = new Scene(root);
     }

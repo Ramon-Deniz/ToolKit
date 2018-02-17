@@ -1,7 +1,6 @@
 package withdrawal;
 
 import ToolKitConstant.Constant;
-import finance.Finance;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -11,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.json.JSONException;
 
 /**
  * FXML Controller class
@@ -44,6 +44,14 @@ public class FXMLWithdrawalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        try {
+            initialAmount.setText(Constant.saved.getJSONObject("withdrawalInput").getString("initialAmount"));
+            months.setText(Constant.saved.getJSONObject("withdrawalInput").getString("months"));
+            interest.setText(Constant.saved.getJSONObject("withdrawalInput").getString("interest"));
+            result.setText(Constant.saved.getJSONObject("withdrawalInput").getString("result"));
+        } catch (JSONException e) {
+            result.setText("Save error");
+        }
     }
 
     @FXML
@@ -53,6 +61,7 @@ public class FXMLWithdrawalController implements Initializable {
 
     @FXML
     private void handleClose(ActionEvent event) {
+        Constant.save();
         Platform.exit();
     }
 
@@ -74,6 +83,16 @@ public class FXMLWithdrawalController implements Initializable {
     @FXML
     private void handleCalculate(ActionEvent event) {
         result.setText(WithdrawalLogic.calculate(initialAmount.getText(), months.getText(), interest.getText()));
+        updateJSON();
     }
 
+    private void updateJSON() {
+        try {
+            Constant.saved.getJSONObject("withdrawalInput").put("initialAmount", initialAmount.getText());
+            Constant.saved.getJSONObject("withdrawalInput").put("months", months.getText());
+            Constant.saved.getJSONObject("withdrawalInput").put("interest", interest.getText());
+            Constant.saved.getJSONObject("withdrawalInput").put("result", result.getText());
+        } catch (JSONException e) {
+        }
+    }
 }

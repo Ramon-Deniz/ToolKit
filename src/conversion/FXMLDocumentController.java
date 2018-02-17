@@ -15,6 +15,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import org.json.JSONException;
 
 /**
  * FXML Controller class
@@ -22,7 +23,7 @@ import javafx.scene.text.Text;
  * @author ramon
  */
 public class FXMLDocumentController implements Initializable {
-    
+
     @FXML
     private Button back;
     @FXML
@@ -45,7 +46,7 @@ public class FXMLDocumentController implements Initializable {
     private Text initialUnitText = new Text();
     @FXML
     private Text finalUnitText = new Text();
-    
+
     private ObservableList<String> currencyOptions = ConversionLogic.currencyOptions;
     private ObservableList<String> lengthOptions = ConversionLogic.lengthOptions;
     private ObservableList<String> volumeOptions = ConversionLogic.volumeOptions;
@@ -59,23 +60,32 @@ public class FXMLDocumentController implements Initializable {
         // TODO
         conversionType.getItems().clear();
         conversionType.getItems().addAll("Currency", "Length", "Volume", "Weight");
+        try {
+            inputText.setText(Constant.saved.getJSONObject("conversionInput").getString("inputText"));
+            resultText.setText(Constant.saved.getJSONObject("conversionInput").getString("resultText"));
+            initialUnitText.setText(Constant.saved.getJSONObject("conversionInput").getString("initialUnitText"));
+            finalUnitText.setText(Constant.saved.getJSONObject("conversionInput").getString("finalUnitText"));
+        } catch (JSONException e) {
+            resultText.setText("Save error");
+        }
     }
-    
+
     @FXML
     private void handleBack(ActionEvent event) {
         Constant.stage.setScene(Constant.mainScene);
     }
-    
+
     @FXML
     private void handleClose(ActionEvent event) {
+        Constant.save();
         Platform.exit();
     }
-    
+
     @FXML
     private void handleMinimize(ActionEvent event) {
         Constant.stage.setIconified(true);
     }
-    
+
     @FXML
     private void handleDragPress(MouseEvent event) {
         double xOffset = Constant.stage.getX() - event.getScreenX();
@@ -85,7 +95,7 @@ public class FXMLDocumentController implements Initializable {
             Constant.stage.setY(mouseEvent.getScreenY() + yOffset);
         });
     }
-    
+
     @FXML
     private void handleConversionSelect(ActionEvent event) {
         String type = conversionType.getValue().toString();
@@ -101,7 +111,7 @@ public class FXMLDocumentController implements Initializable {
             initialUnits.getItems().setAll(weightOptions);
         }
     }
-    
+
     @FXML
     private void handleInitialUnits(ActionEvent event) {
         String units = initialUnits.getValue().toString();
@@ -110,14 +120,14 @@ public class FXMLDocumentController implements Initializable {
         finalUnits.getItems().setAll(ConversionLogic.getFinalUnitList(units));
         initialUnitText.setText(ConversionLogic.getAbbreviation(units));
     }
-    
+
     @FXML
     private void handleFinalUnits(ActionEvent event) {
         resultText.setPromptText("Press Enter");
         String unitFinal = finalUnits.getValue().toString();
         finalUnitText.setText(ConversionLogic.getAbbreviation(unitFinal));
     }
-    
+
     @FXML
     private void handleKeyPress(KeyEvent key) {
         String valid = ".0123456789";
@@ -125,14 +135,24 @@ public class FXMLDocumentController implements Initializable {
             inputText.appendText(key.getText());
         }
         if (!inputText.getText().toString().equals("") && key.getCode().equals(KeyCode.BACK_SPACE)) {
-            inputText.setText(inputText.getText().substring(0, inputText.getText().length()-1));
-        }
-        else if(!inputText.toString().equals("") && !initialUnits.getSelectionModel().isEmpty() &&
-                !finalUnits.getSelectionModel().isEmpty() && key.getCode().equals(KeyCode.ENTER)){
+            inputText.setText(inputText.getText().substring(0, inputText.getText().length() - 1));
+        } else if (!inputText.toString().equals("") && !initialUnits.getSelectionModel().isEmpty()
+                && !finalUnits.getSelectionModel().isEmpty() && key.getCode().equals(KeyCode.ENTER)) {
             String initial = initialUnits.getValue().toString();
             String end = finalUnits.getValue().toString();
             resultText.setText(ConversionLogic.convert(initial, end, inputText.getText()));
+            updateJSON();
         }
     }
-    
+
+    private void updateJSON() {
+        try {
+            Constant.saved.getJSONObject("conversionInput").put("resultText", resultText.getText());
+            Constant.saved.getJSONObject("conversionInput").put("initialUnitText", initialUnitText.getText());
+            Constant.saved.getJSONObject("conversionInput").put("finalUnitText", finalUnitText.getText());
+            Constant.saved.getJSONObject("conversionInput").put("inputText", inputText.getText());
+        } catch (JSONException e) {
+        }
+    }
+
 }

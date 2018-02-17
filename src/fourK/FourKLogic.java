@@ -7,7 +7,7 @@ package fourK;
 public class FourKLogic {
 
     public static String calculate(String contributeInput, String currentAge, String annualSalary, String retirementAge,
-            String salaryIncreaseInput,String currentBalance, String employerMatch, String inflationInput,
+            String salaryIncreaseInput, String currentBalance, String employerMatch, String inflationInput,
             String employerMatchEnds, String rateOfReturnInput) {
         String result = "";
         try {
@@ -35,7 +35,7 @@ public class FourKLogic {
     }
 
     private static double getNumber(String input) throws Exception {
-        if(input.length()==0){
+        if (input.length() == 0) {
             return 0.0;
         }
         double number = Double.parseDouble(input);
@@ -61,7 +61,7 @@ public class FourKLogic {
             return balance;
         }
         balance += (salary * contribute);
-        balance *= (1.0 + rate)*(1.0-inflation);
+        balance *= (1.0 + rate) * (1.0 - inflation);
         salary *= (1.0 + salaryIncrease);
         return calculate(contribute, years - 1, salary, salaryIncrease, balance, rate, inflation);
     }

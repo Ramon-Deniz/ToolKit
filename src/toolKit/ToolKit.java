@@ -1,8 +1,6 @@
-
 package toolKit;
 
 import ToolKitConstant.Constant;
-import calculator.Calculator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,16 +13,16 @@ import javafx.stage.StageStyle;
  * @author ramon
  */
 public class ToolKit extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         stage.initStyle(StageStyle.UNDECORATED);
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
+
         Scene scene = new Scene(root);
-        
-        Constant tempConstant = new Constant(stage,scene);
-        
+
+        Constant tempConstant = new Constant(stage, scene);
+
         stage.setScene(scene);
         stage.show();
     }
@@ -35,5 +33,5 @@ public class ToolKit extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

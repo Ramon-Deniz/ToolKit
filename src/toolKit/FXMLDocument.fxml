@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" opacity="1.0" prefHeight="406.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="toolKit.FXMLDocumentController">
   <children>
-    <Button id="Button" fx:id="calculator" mnemonicParsing="false" onAction="#handleCalculatorAction" prefHeight="50.0" prefWidth="200.0" text="Calculator" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="72.0">
+    <Button id="Button" fx:id="calculator" mnemonicParsing="false" onAction="#handleCalculatorAction" prefHeight="50.0" prefWidth="200.0" text="Calculator" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="56.0">
       <font>
         <Font size="18.0" fx:id="x1" />
       </font>
@@ -18,7 +18,7 @@
         <URL value="@Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="conversion" font="$x1" layoutX="50.0" layoutY="144.0" mnemonicParsing="false" onAction="#handleConversion" prefHeight="50.0" prefWidth="200.0" text="Conversion" textAlignment="CENTER">
+    <Button id="Button" fx:id="conversion" font="$x1" layoutX="50.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleConversion" prefHeight="50.0" prefWidth="200.0" text="Conversion" textAlignment="CENTER">
       <stylesheets>
         <URL value="@Tool.css" />
       </stylesheets>
@@ -44,7 +44,17 @@
         <URL value="@Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="finance" font="$x1" layoutX="50.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleFinance" prefHeight="50.0" prefWidth="200.0" text="Finance" textAlignment="CENTER">
+    <Button id="Button" fx:id="finance" font="$x1" layoutX="50.0" layoutY="196.0" mnemonicParsing="false" onAction="#handleFinance" prefHeight="50.0" prefWidth="200.0" text="Finance" textAlignment="CENTER">
+      <stylesheets>
+        <URL value="@Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="Button" font="$x1" layoutX="50.0" layoutY="266.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Remainders" textAlignment="CENTER">
+      <stylesheets>
+        <URL value="@Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="Button" font="$x1" layoutX="50.0" layoutY="336.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Solvers" textAlignment="CENTER">
       <stylesheets>
         <URL value="@Tool.css" />
       </stylesheets>
