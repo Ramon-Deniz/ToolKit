@@ -31,14 +31,14 @@ public class Constant {
 
     public static Stage stage;
     public static Scene mainScene;
-    public static String expression;
-    public static List<String> answers;
     public static Scene calculatorScene;
     public static Scene conversionScene;
     public static Scene financeScene;
     public static Scene fourKScene;
     public static Scene withdrawScene;
     public static Scene loanScene;
+    public static String expression;
+    public static List<String> answers;
     public static JSONObject apiData;
     public static JSONObject saved;
 
@@ -67,6 +67,10 @@ public class Constant {
         expression = "";
     }
 
+    /**
+     * Removes the first answer from List and adds a new answer to the end of.
+     * the List
+     */
     public static void updateAnswers() {
         if (!answers.contains(expression) && !expression.equals("")) {
             answers.remove(0);
@@ -81,6 +85,11 @@ public class Constant {
         }
     }
 
+    /**
+     * Returns the answers as a String.
+     *
+     * @return
+     */
     public static String getAnswers() {
         String answer = "";
         for (int i = 0; i < answers.size(); i++) {
@@ -89,31 +98,74 @@ public class Constant {
         return answer;
     }
 
-    private static void setAPI() throws Exception {
-        URL url = new URL("https://api.fixer.io/latest");
-        URLConnection con = url.openConnection();
-        InputStream is = con.getInputStream();
-        apiData = (JSONObject) new JSONTokener(new InputStreamReader(is, "UTF-8")).nextValue();
+    /**
+     * Gathers currency rates from API as a JSONObject.
+     */
+    private static void setAPI() {
+        try {
+            URL url = new URL("https://api.fixer.io/latest");
+            URLConnection con = url.openConnection();
+            InputStream is = con.getInputStream();
+            apiData = (JSONObject) new JSONTokener(new InputStreamReader(is, "UTF-8")).nextValue();
+            if (apiData.isNull(expression)) {
+                setAPIWithFailedConnection();
+            }
+        } catch (Exception e) {
+            setAPIWithFailedConnection();
+        }
     }
 
-    private static void setSaved() throws Exception {
-        InputStream is = new FileInputStream(new File("src/ToolKitConstant/JSONSaved.txt"));
-        saved = (JSONObject) new JSONTokener(new InputStreamReader(is, "UTF-8")).nextValue();
-        answers.add(saved.getJSONObject("answers").getString("answers1"));
-        answers.add(saved.getJSONObject("answers").getString("answers2"));
-        answers.add(saved.getJSONObject("answers").getString("answers3"));
-        answers.add(saved.getJSONObject("answers").getString("answers4"));
+    /**
+     * Gathers currency rates from file as a JSONObject, if there's no
+     * connection.
+     */
+    private static void setAPIWithFailedConnection() {
+        try {
+            InputStream is = new FileInputStream(new File("src/ToolKitConstant/JSONSaved.txt"));
+        } catch (FileNotFoundException e) {
+            displayError("Error retrieving currency rates and loading default values");
+        }
+
     }
 
+    /**
+     * Retrieves saved input from file and loads into corresponding TextFields.
+     */
+    private static void setSaved() {
+        try {
+            InputStream is = new FileInputStream(new File("src/ToolKitConstant/JSONSaved.txt"));
+            saved = (JSONObject) new JSONTokener(new InputStreamReader(is, "UTF-8")).nextValue();
+            answers.add(saved.getJSONObject("answers").getString("answers1"));
+            answers.add(saved.getJSONObject("answers").getString("answers2"));
+            answers.add(saved.getJSONObject("answers").getString("answers3"));
+            answers.add(saved.getJSONObject("answers").getString("answers4"));
+        } catch (Exception e) {
+            displayError("Error retrieving saved input");
+        }
+    }
+
+    /**
+     * Saves JSONObject into file.
+     */
     public static void save() {
         try {
             PrintStream output = new PrintStream(new File("src/ToolKitConstant/JSONSaved.txt"));
             output.print(saved);
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Error saving to file",
-                    "ERROR",
-                    JOptionPane.ERROR_MESSAGE);
+            displayError("Error saving to file");
         }
+    }
+
+    /**
+     * Display error message as JOptionPane and exit program.
+     *
+     * @param message
+     */
+    private static void displayError(String message) {
+        JOptionPane.showMessageDialog(null,
+                message,
+                "ERROR",
+                JOptionPane.ERROR_MESSAGE);
+        System.exit(0);
     }
 }

@@ -6,21 +6,36 @@ package fourK;
  */
 public class FourKLogic {
 
+    /**
+     * Calculates the future balance of a 401K plan and returns it as a String.
+     *
+     * @param contributeInput
+     * @param currentAge
+     * @param annualSalary
+     * @param retirementAge
+     * @param salaryIncreaseInput
+     * @param currentBalance
+     * @param employerMatch
+     * @param inflationInput
+     * @param employerMatchEnds
+     * @param rateOfReturnInput
+     * @return
+     */
     public static String calculate(String contributeInput, String currentAge, String annualSalary, String retirementAge,
             String salaryIncreaseInput, String currentBalance, String employerMatch, String inflationInput,
             String employerMatchEnds, String rateOfReturnInput) {
         String result = "";
         try {
-            double contribute = getNumber(contributeInput) / 100.0;
             int age = getAge(currentAge);
-            double salary = getNumber(annualSalary);
             int retire = getAge(retirementAge);
-            double salaryIncrease = getNumber(salaryIncreaseInput) / 100.0;
+            double contribute = getNumber(contributeInput) / 100;
+            double salary = getNumber(annualSalary);
+            double salaryIncrease = getNumber(salaryIncreaseInput) / 100;
             double balance = getNumber(currentBalance);
-            double match = getNumber(employerMatch) / 100.0;
-            double inflation = getNumber(inflationInput) / 100.0;
-            double matchEnd = getNumber(employerMatchEnds) / 100.0;
-            double rateOfReturn = getNumber(rateOfReturnInput) / 100.0;
+            double match = getNumber(employerMatch) / 100;
+            double inflation = getNumber(inflationInput) / 100;
+            double matchEnd = getNumber(employerMatchEnds) / 100;
+            double rateOfReturn = getNumber(rateOfReturnInput) / 100;
             retire -= age;
             if (retire < 0.0) {
                 return "Invalid Input";
@@ -34,6 +49,13 @@ public class FourKLogic {
         return result;
     }
 
+    /**
+     * Returns a double if the String parameter is valid.
+     *
+     * @param input
+     * @return
+     * @throws Exception
+     */
     private static double getNumber(String input) throws Exception {
         if (input.length() == 0) {
             return 0.0;
@@ -46,6 +68,13 @@ public class FourKLogic {
         return number;
     }
 
+    /**
+     * Returns an int if the String parameter is valid.
+     *
+     * @param input
+     * @return
+     * @throws Exception
+     */
     private static int getAge(String input) throws Exception {
         int number = Integer.parseInt(input);
         if (number < 0) {
@@ -55,6 +84,18 @@ public class FourKLogic {
         return number;
     }
 
+    /**
+     * Calculates the future balance of a 401K plan and returns it as an int.
+     *
+     * @param contribute
+     * @param years
+     * @param salary
+     * @param salaryIncrease
+     * @param balance
+     * @param rate
+     * @param inflation
+     * @return
+     */
     private static double calculate(double contribute, int years, double salary, double salaryIncrease,
             double balance, double rate, double inflation) {
         if (years == 0) {

@@ -12,10 +12,10 @@ public class CalculatorLogic {
 
     //Valid input
     private static final String NUMBERS = "0123456789.";
-    private static final String OPERANDS = "(^+-*/%!)";
+    private static final String OPERATIONS = "(^+-*/%!)";
 
     /**
-     * Solves a valid expression and returns it as a string.
+     * Solves a valid expression and returns it as a String.
      *
      * @param stringExpression
      * @return String
@@ -37,6 +37,12 @@ public class CalculatorLogic {
         return stringExpression;
     }
 
+    /**
+     * Formats an expression before it's passed to solve().
+     *
+     * @param expression
+     * @throws InvalidExpressionException
+     */
     private static void format(List<String> expression) throws InvalidExpressionException {
         if (expression.get(0).equals("-")) {
             expression.remove(0);
@@ -57,26 +63,41 @@ public class CalculatorLogic {
         }
     }
 
+    /**
+     * Solves a List one operation at a time, and returns a simplified
+     * expression as a List.
+     *
+     * @param expression
+     * @return
+     * @throws InvalidExpressionException
+     */
     private static List<String> solve(List<String> expression) throws InvalidExpressionException {
         solvePar(expression);
         solveFactorial(expression);
-        solveOperand(expression, "^");
+        solveOperation(expression, "^");
 
         int multiplyInstance = firstInstance(expression, "*", 0);
         int divideInstance = firstInstance(expression, "/", 0);
         if (multiplyInstance < divideInstance) {
-            solveOperand(expression, "*");
-            solveOperand(expression, "/");
+            solveOperation(expression, "*");
+            solveOperation(expression, "/");
         } else {
-            solveOperand(expression, "/");
-            solveOperand(expression, "*");
+            solveOperation(expression, "/");
+            solveOperation(expression, "*");
         }
 
-        solveOperand(expression, "+");
-        solveOperand(expression, "-");
+        solveOperation(expression, "+");
+        solveOperation(expression, "-");
         return expression;
     }
 
+    /**
+     * Converts a String to a List that splits every operation and number into
+     * separate elements, and the List is returned.
+     *
+     * @param expression
+     * @return
+     */
     private static List<String> stringToList(String expression) {
         List<String> expressionList = new ArrayList<>();
         int index = 0;
@@ -88,7 +109,7 @@ public class CalculatorLogic {
                 }
                 index++;
             }
-            if (i < expression.length() && OPERANDS.indexOf(expression.charAt(i)) != -1) {
+            if (i < expression.length() && OPERATIONS.indexOf(expression.charAt(i)) != -1) {
                 expressionList.add("" + expression.charAt(i));
                 index++;
             }
@@ -97,6 +118,13 @@ public class CalculatorLogic {
         return expressionList;
     }
 
+    /**
+     * Solves expressions within parentheses and returns a simplified expression
+     * as a List.
+     *
+     * @param expression
+     * @throws InvalidExpressionException
+     */
     private static void solvePar(List<String> expression) throws InvalidExpressionException {
         int index = firstInstance(expression, "(", 0);
         if (index == -1) {
@@ -113,6 +141,13 @@ public class CalculatorLogic {
         solve(expression);
     }
 
+    /**
+     * Solves a factorial operation and returns a simplified expression as a
+     * List.
+     *
+     * @param expression
+     * @throws InvalidExpressionException
+     */
     private static void solveFactorial(List<String> expression) throws InvalidExpressionException {
         int index = firstInstance(expression, "!", 0);
         if (index == -1) {
@@ -121,6 +156,8 @@ public class CalculatorLogic {
         double num;
         try {
             num = Double.parseDouble(expression.get(index - 1));
+
+            //Throws an exception if the number before a factorial is a double
             if ((int) num != num) {
                 throw new InvalidExpressionException();
             }
@@ -137,8 +174,15 @@ public class CalculatorLogic {
         solve(expression);
     }
 
-    private static void solveOperand(List<String> expression, String operand) throws InvalidExpressionException {
-        int index = firstInstance(expression, operand, 0);
+    /**
+     * Solves one operation of the expression.
+     *
+     * @param expression
+     * @param operation
+     * @throws InvalidExpressionException
+     */
+    private static void solveOperation(List<String> expression, String operation) throws InvalidExpressionException {
+        int index = firstInstance(expression, operation, 0);
         if (index == -1) {
             return;
         }
@@ -149,31 +193,56 @@ public class CalculatorLogic {
         } catch (Exception e) {
             throw new InvalidExpressionException();
         }
-        if (operand.equals("^")) {
-            firstNum = Math.pow(firstNum, secondNum);
-        } else if (operand.equals("*")) {
-            firstNum *= secondNum;
-        } else if (operand.equals("/")) {
-            if (secondNum == 0.0) {
-                throw new InvalidExpressionException();
-            }
-            firstNum /= secondNum;
-        } else if (operand.equals("+")) {
-            firstNum += secondNum;
-        } else if (operand.equals("-")) {
-            firstNum -= secondNum;
+        switch (operation) {
+            case "^":
+                firstNum = Math.pow(firstNum, secondNum);
+                break;
+            case "*":
+                firstNum *= secondNum;
+                break;
+            case "/":
+                //Throws exception if denominator is zero
+                if (secondNum == 0.0) {
+                    throw new InvalidExpressionException();
+                }
+                firstNum /= secondNum;
+                break;
+            case "+":
+                firstNum += secondNum;
+                break;
+            case "-":
+                firstNum -= secondNum;
+                break;
+            default:
+                break;
         }
         expression.set(index - 1, "" + firstNum);
         remove(expression, index, index + 1);
         solve(expression);
     }
 
+    /**
+     * Removes a range of elements from a List
+     *
+     * @param expression
+     * @param fromIndex
+     * @param toIndex
+     */
     private static void remove(List<String> expression, int fromIndex, int toIndex) {
         for (int i = toIndex; i >= fromIndex; i--) {
             expression.remove(i);
         }
     }
 
+    /**
+     * Returns the first instance of a String in a List based on what index to
+     * start searching.
+     *
+     * @param expression
+     * @param search
+     * @param index
+     * @return
+     */
     private static int firstInstance(List<String> expression, String search, int index) {
         for (int i = index; i < expression.size(); i++) {
             if (expression.get(i).equals(search)) {

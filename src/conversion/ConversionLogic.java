@@ -14,6 +14,7 @@ import org.json.JSONException;
  */
 public class ConversionLogic {
 
+    //Names used for drop down menu
     public static ObservableList<String> currencyOptions = FXCollections.observableArrayList("USD",
             "EUR", "GBP", "AUD", "MXN", "CAD", "CNY", "JPY", "THB", "CHF", "KRW", "ZAR", "RUB");
     public static ObservableList<String> lengthOptions = FXCollections.observableArrayList("Feet", "Inches",
@@ -30,8 +31,9 @@ public class ConversionLogic {
     private static final Map<String, String> ABBREVIATIONS = getAbbreviations();
 
     /**
-     * Returns an ObservableList of type string that excludes one element from
-     * original ObservableList
+     * Returns an ObservableList of type String that excludes one element from
+     * original ObservableList. The element removed is based on which unit was
+     * picked in the first drop down menu.
      *
      * @param unitUsed
      * @return
@@ -52,7 +54,7 @@ public class ConversionLogic {
     }
 
     /**
-     * Converts from one unit to another and returns that value
+     * Converts from one unit to another and returns that value as a String
      *
      * @param unitInitial
      * @param unitFinal
@@ -107,7 +109,8 @@ public class ConversionLogic {
     }
 
     /**
-     * Returns an abbreviation of the string if the units is large enough
+     * Returns an abbreviation of the String if the unit exceeds a certain
+     * length.
      *
      * @param units
      * @return
@@ -117,15 +120,6 @@ public class ConversionLogic {
             return ABBREVIATIONS.get(units);
         }
         return units;
-    }
-
-    private static int getIndex(String[] units, String search) {
-        for (int i = 0; i < units.length; i++) {
-            if (units[i].equals(search)) {
-                return i;
-            }
-        }
-        return -1;
     }
 
     //Base unit for length: Meters
