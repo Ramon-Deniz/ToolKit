@@ -2,7 +2,6 @@ package fourK;
 
 import ToolKitConstant.Constant;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -12,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * FXML Controller class
@@ -60,17 +60,18 @@ public class FXMLFourKController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         try {
-            contribute.setText(Constant.saved.getJSONObject("fourKInput").getString("contribute"));
-            currentAge.setText(Constant.saved.getJSONObject("fourKInput").getString("contribute"));
-            annualSalary.setText(Constant.saved.getJSONObject("fourKInput").getString("annualSalary"));
-            retirementAge.setText(Constant.saved.getJSONObject("fourKInput").getString("retirementAge"));
-            salaryIncrease.setText(Constant.saved.getJSONObject("fourKInput").getString("salaryIncrease"));
-            currentBalance.setText(Constant.saved.getJSONObject("fourKInput").getString("currentBalance"));
-            employerMatch.setText(Constant.saved.getJSONObject("fourKInput").getString("employerMatch"));
-            inflation.setText(Constant.saved.getJSONObject("fourKInput").getString("inflation"));
-            employerMatchEnds.setText(Constant.saved.getJSONObject("fourKInput").getString("employerMatchEnds"));
-            rateOfReturn.setText(Constant.saved.getJSONObject("fourKInput").getString("rateOfReturn"));
-            result.setText(Constant.saved.getJSONObject("fourKInput").getString("result"));
+            JSONObject fourKJSON = Constant.saved.getJSONObject("fourKInput");
+            contribute.setText(fourKJSON.getString("contribute"));
+            currentAge.setText(fourKJSON.getString("currentAge"));
+            annualSalary.setText(fourKJSON.getString("annualSalary"));
+            retirementAge.setText(fourKJSON.getString("retirementAge"));
+            salaryIncrease.setText(fourKJSON.getString("salaryIncrease"));
+            currentBalance.setText(fourKJSON.getString("currentBalance"));
+            employerMatch.setText(fourKJSON.getString("employerMatch"));
+            inflation.setText(fourKJSON.getString("inflation"));
+            employerMatchEnds.setText(fourKJSON.getString("employerMatchEnds"));
+            rateOfReturn.setText(fourKJSON.getString("rateOfReturn"));
+            result.setText(fourKJSON.getString("result"));
         } catch (JSONException e) {
             result.setText("Save error");
         }
@@ -104,11 +105,9 @@ public class FXMLFourKController implements Initializable {
 
     @FXML
     private void handleCalculate(ActionEvent event) {
-        String amount = FourKLogic.calculate(contribute.getText(), currentAge.getText(), annualSalary.getText(),
+        result.setText(FourKLogic.calculate(contribute.getText(), currentAge.getText(), annualSalary.getText(),
                 retirementAge.getText(), salaryIncrease.getText(), currentBalance.getText(), employerMatch.getText(),
-                inflation.getText(), employerMatchEnds.getText(), rateOfReturn.getText());
-        DecimalFormat pattern = new DecimalFormat("###,###,###.###");
-        result.setText(pattern.format(Double.parseDouble(amount)));
+                inflation.getText(), employerMatchEnds.getText(), rateOfReturn.getText()));
         updateJSON();
     }
 
@@ -126,7 +125,7 @@ public class FXMLFourKController implements Initializable {
             Constant.saved.getJSONObject("fourKInput").put("rateOfReturn", rateOfReturn.getText());
             Constant.saved.getJSONObject("fourKInput").put("result", result.getText());
         } catch (JSONException e) {
-            System.out.println("Test");
+            Constant.displayErrorAndExit("Trouble with saving.");
         }
     }
 }

@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * FXML Controller class
@@ -45,10 +46,11 @@ public class FXMLWithdrawalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         try {
-            initialAmount.setText(Constant.saved.getJSONObject("withdrawalInput").getString("initialAmount"));
-            months.setText(Constant.saved.getJSONObject("withdrawalInput").getString("months"));
-            interest.setText(Constant.saved.getJSONObject("withdrawalInput").getString("interest"));
-            result.setText(Constant.saved.getJSONObject("withdrawalInput").getString("result"));
+            JSONObject withdrawJSON = Constant.saved.getJSONObject("withdrawalInput");
+            initialAmount.setText(withdrawJSON.getString("initialAmount"));
+            months.setText(withdrawJSON.getString("months"));
+            interest.setText(withdrawJSON.getString("interest"));
+            result.setText(withdrawJSON.getString("result"));
         } catch (JSONException e) {
             result.setText("Save error");
         }

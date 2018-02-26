@@ -105,7 +105,7 @@ public class ConversionLogic {
         if (currency.equals("EUR")) {
             return 1;
         }
-        return Constant.apiData.getJSONObject("rates").getDouble(currency);
+        return Constant.saved.getJSONObject("rates").getDouble(currency);
     }
 
     /**

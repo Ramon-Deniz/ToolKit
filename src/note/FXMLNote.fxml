@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="300.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="note.FXMLNoteController">
+  <children>
+    <Button id="WindowButton" fx:id="back" alignment="CENTER" layoutX="0.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="36.0" prefWidth="50.0" text="⮌" textAlignment="RIGHT">
+      <font>
+        <Font size="18.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="drag" layoutX="50.0" layoutY="0.0" mnemonicParsing="false" mouseTransparent="false" onMousePressed="#handleDragPress" prefHeight="36.0" prefWidth="180.0" text="">
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="close" layoutX="265.0" layoutY="0.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleClose" prefHeight="36.0" prefWidth="35.0" text="X">
+      <font>
+        <Font size="14.0" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="WindowButton" fx:id="minimize" layoutX="230.0" layoutY="0.0" minWidth="25.0" mnemonicParsing="false" onAction="#handleMinimize" prefHeight="36.0" prefWidth="35.0" text="_">
+      <font>
+        <Font size="16.0" fx:id="x1" />
+      </font>
+      <stylesheets>
+        <URL value="@../toolKit/Tool.css" />
+      </stylesheets>
+    </Button>
+    <Button id="Button" fx:id="newNote" font="$x1" layoutX="161.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleNewNote" prefHeight="36.0" prefWidth="104.0" text="New Note" />
+  </children>
+  <stylesheets>
+    <URL value="@../toolKit/Tool.css" />
+  </stylesheets>
+</AnchorPane>

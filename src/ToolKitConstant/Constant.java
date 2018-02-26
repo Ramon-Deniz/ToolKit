@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import loan.Loan;
+import note.Note;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -37,17 +38,17 @@ public class Constant {
     public static Scene fourKScene;
     public static Scene withdrawScene;
     public static Scene loanScene;
+    public static Scene noteScene;
     public static String expression;
     public static List<String> answers;
-    public static JSONObject apiData;
     public static JSONObject saved;
 
     public Constant(Stage stage, Scene scene) throws Exception {
         Constant.stage = stage;
 
         answers = new ArrayList<>();
-        setAPI();
         setSaved();
+        setAPI();
 
         Calculator calc = new Calculator();
         Conversion conv = new Conversion();
@@ -55,6 +56,7 @@ public class Constant {
         FourK fourK = new FourK();
         Withdrawal withdraw = new Withdrawal();
         Loan loan = new Loan();
+        Note note = new Note();
 
         conversionScene = conv.scene;
         calculatorScene = calc.scene;
@@ -62,6 +64,7 @@ public class Constant {
         fourKScene = fourK.scene;
         withdrawScene = withdraw.scene;
         loanScene = loan.scene;
+        noteScene = note.scene;
 
         mainScene = scene;
         expression = "";
@@ -106,26 +109,17 @@ public class Constant {
             URL url = new URL("https://api.fixer.io/latest");
             URLConnection con = url.openConnection();
             InputStream is = con.getInputStream();
-            apiData = (JSONObject) new JSONTokener(new InputStreamReader(is, "UTF-8")).nextValue();
-            if (apiData.isNull(expression)) {
-                setAPIWithFailedConnection();
+            JSONObject apiData = (JSONObject) new JSONTokener(new InputStreamReader(is, "UTF-8")).nextValue();
+            apiData = apiData.getJSONObject("rates");
+            if (apiData.has("rates")) {
+                displayError("Warning:\nInaccurate currency Rates");
+            }
+            else{
+                saved.put("rates", apiData);
             }
         } catch (Exception e) {
-            setAPIWithFailedConnection();
+            displayError("Warning:\nInaccurate currency Rates");
         }
-    }
-
-    /**
-     * Gathers currency rates from file as a JSONObject, if there's no
-     * connection.
-     */
-    private static void setAPIWithFailedConnection() {
-        try {
-            InputStream is = new FileInputStream(new File("src/ToolKitConstant/JSONSaved.txt"));
-        } catch (FileNotFoundException e) {
-            displayError("Error retrieving currency rates and loading default values");
-        }
-
     }
 
     /**
@@ -133,14 +127,14 @@ public class Constant {
      */
     private static void setSaved() {
         try {
-            InputStream is = new FileInputStream(new File("src/ToolKitConstant/JSONSaved.txt"));
+            InputStream is = new FileInputStream(new File("src/ToolKitConstant/JSONSaved.json"));
             saved = (JSONObject) new JSONTokener(new InputStreamReader(is, "UTF-8")).nextValue();
             answers.add(saved.getJSONObject("answers").getString("answers1"));
             answers.add(saved.getJSONObject("answers").getString("answers2"));
             answers.add(saved.getJSONObject("answers").getString("answers3"));
             answers.add(saved.getJSONObject("answers").getString("answers4"));
         } catch (Exception e) {
-            displayError("Error retrieving saved input");
+            displayErrorAndExit("Error retrieving saved input");
         }
     }
 
@@ -149,23 +143,30 @@ public class Constant {
      */
     public static void save() {
         try {
-            PrintStream output = new PrintStream(new File("src/ToolKitConstant/JSONSaved.txt"));
+            PrintStream output = new PrintStream(new File("src/ToolKitConstant/JSONSaved.json"));
             output.print(saved);
         } catch (FileNotFoundException e) {
-            displayError("Error saving to file");
+            displayErrorAndExit("Error saving to file");
         }
     }
 
     /**
-     * Display error message as JOptionPane and exit program.
+     * Display error message as JOptionPane and exits program.
      *
      * @param message
      */
-    private static void displayError(String message) {
+    public static void displayErrorAndExit(String message) {
         JOptionPane.showMessageDialog(null,
                 message,
                 "ERROR",
                 JOptionPane.ERROR_MESSAGE);
         System.exit(0);
+    }
+
+    public static void displayError(String message) {
+        JOptionPane.showMessageDialog(null,
+                message,
+                "ERROR",
+                JOptionPane.ERROR_MESSAGE);
     }
 }

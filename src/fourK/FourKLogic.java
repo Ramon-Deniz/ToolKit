@@ -1,5 +1,7 @@
 package fourK;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author ramon
@@ -43,6 +45,8 @@ public class FourKLogic {
             matchEnd *= match;
             contribute += matchEnd;
             result += calculate(contribute, retire, salary, salaryIncrease, balance, rateOfReturn, inflation);
+            DecimalFormat pattern = new DecimalFormat("###,###,###.###");
+            result = pattern.format(Double.parseDouble(result));
         } catch (Exception e) {
             return "Invalid Input";
         }

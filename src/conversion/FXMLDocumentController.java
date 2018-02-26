@@ -16,6 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * FXML Controller class
@@ -61,10 +62,11 @@ public class FXMLDocumentController implements Initializable {
         conversionType.getItems().clear();
         conversionType.getItems().addAll("Currency", "Length", "Volume", "Weight");
         try {
-            inputText.setText(Constant.saved.getJSONObject("conversionInput").getString("inputText"));
-            resultText.setText(Constant.saved.getJSONObject("conversionInput").getString("resultText"));
-            initialUnitText.setText(Constant.saved.getJSONObject("conversionInput").getString("initialUnitText"));
-            finalUnitText.setText(Constant.saved.getJSONObject("conversionInput").getString("finalUnitText"));
+            JSONObject conversionJSON = Constant.saved.getJSONObject("conversionInput");
+            inputText.setText(conversionJSON.getString("inputText"));
+            resultText.setText(conversionJSON.getString("resultText"));
+            initialUnitText.setText(conversionJSON.getString("initialUnitText"));
+            finalUnitText.setText(conversionJSON.getString("finalUnitText"));
         } catch (JSONException e) {
             resultText.setText("Save error");
         }
