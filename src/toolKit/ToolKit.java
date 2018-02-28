@@ -16,9 +16,10 @@ public class ToolKit extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        
         stage.initStyle(StageStyle.UNDECORATED);
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-
+        
         Scene scene = new Scene(root);
 
         Constant tempConstant = new Constant(stage, scene);

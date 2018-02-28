@@ -136,9 +136,9 @@ public class FXMLDocumentController implements Initializable {
         if (!initialUnits.getSelectionModel().isEmpty() && valid.contains(key.getText())) {
             inputText.appendText(key.getText());
         }
-        if (!inputText.getText().toString().equals("") && key.getCode().equals(KeyCode.BACK_SPACE)) {
+        if (!inputText.getText().equals("") && key.getCode().equals(KeyCode.BACK_SPACE)) {
             inputText.setText(inputText.getText().substring(0, inputText.getText().length() - 1));
-        } else if (!inputText.toString().equals("") && !initialUnits.getSelectionModel().isEmpty()
+        } else if (!inputText.getText().equals("") && !initialUnits.getSelectionModel().isEmpty()
                 && !finalUnits.getSelectionModel().isEmpty() && key.getCode().equals(KeyCode.ENTER)) {
             String initial = initialUnits.getValue().toString();
             String end = finalUnits.getValue().toString();
@@ -154,6 +154,7 @@ public class FXMLDocumentController implements Initializable {
             Constant.saved.getJSONObject("conversionInput").put("finalUnitText", finalUnitText.getText());
             Constant.saved.getJSONObject("conversionInput").put("inputText", inputText.getText());
         } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 

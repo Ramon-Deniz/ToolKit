@@ -32,12 +32,42 @@
     -fx-background-color:#f2f2f2;
 }
 
+#NoteText {
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+    -fx-control-inner-background: #f2f2f2;
+    -fx-background-color: #f2f2f2;
+    -fx-background-radius: 0;
+}
+
+#NoteText .content{
+    -fx-background-color:#f2f2f2;
+}
+
 #Button{
     -fx-background-color: #5795b8;
     -fx-background-radius: 0;
 }
 #Button:focused{
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+#Button:hover{
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-color: #5ea3cb;
+    -fx-background-radius: 0;
+}
+#WarningButton{
+    -fx-background-color: #aa4f4f;
+    -fx-background-radius: 0;
+}
+#WarningButton:focused{
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+#WarningButton:hover{
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-color: #b46363;
     -fx-background-radius: 0;
 }
 #WindowButton{
@@ -48,8 +78,4 @@
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-background-radius: 0;
 }
-#Button:hover{
-    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
-    -fx-background-color: #5ea3cb;
-    -fx-background-radius: 0;
-}
+

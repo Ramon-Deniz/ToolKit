@@ -3,9 +3,11 @@
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="300.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="note.FXMLNoteController">
@@ -25,7 +27,7 @@
     </Button>
     <Button id="WindowButton" fx:id="close" layoutX="265.0" layoutY="0.0" minWidth="35.0" mnemonicParsing="false" onAction="#handleClose" prefHeight="36.0" prefWidth="35.0" text="X">
       <font>
-        <Font size="14.0" />
+        <Font size="14.0" fx:id="x2" />
       </font>
       <stylesheets>
         <URL value="@../toolKit/Tool.css" />
@@ -39,7 +41,21 @@
         <URL value="@../toolKit/Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" fx:id="newNote" font="$x1" layoutX="161.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleNewNote" prefHeight="36.0" prefWidth="104.0" text="New Note" />
+    <Button id="Button" fx:id="newNote" font="$x1" layoutX="160.0" layoutY="353.0" mnemonicParsing="false" onAction="#handleNewNote" prefHeight="36.0" prefWidth="126.0" text="New Note →" />
+    <ComboBox id="Button" fx:id="titles" layoutX="14.0" layoutY="57.0" onAction="#handleNoteList" prefHeight="36.0" prefWidth="272.0" promptText="Click Here to View Notes">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <TextArea id="NoteText" fx:id="messages" layoutX="9.0" layoutY="142.0" prefHeight="178.0" prefWidth="275.0" promptText="Messages in notes will display here." wrapText="true" />
+    <Button id="Button" fx:id="save" font="$x2" layoutX="17.0" layoutY="319.0" minHeight="20.9998779296875" mnemonicParsing="false" onAction="#handleSave" prefHeight="30.0" prefWidth="65.0" text="Save" />
+    <Button id="WarningButton" fx:id="delete" layoutX="17.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="30.0" prefWidth="65.0" text="Delete" />
+    <Line endX="169.0" endY="0.0" layoutX="115.0" layoutY="134.0" startX="-100.0" />
+    <TextArea id="NoteText" fx:id="titleTextArea" layoutX="9.0" layoutY="104.0" prefHeight="30.000099999997474" prefWidth="275.0" promptText="Titles of Notes will Appear Here" wrapText="true" />
   </children>
   <stylesheets>
     <URL value="@../toolKit/Tool.css" />

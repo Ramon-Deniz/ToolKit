@@ -1,4 +1,4 @@
-package note;
+package newNote;
 
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -9,14 +9,14 @@ import javafx.scene.Scene;
  *
  * @author ramon
  */
-public class Note {
+public class AddNote {
 
     public Scene scene;
     public static Parent root;
 
-    public Note() throws IOException{
+    public AddNote() throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("FXMLNote.fxml"));
+        root = FXMLLoader.load(getClass().getResource("FXMLAddNote.fxml"));
         scene = new Scene(root);
     }
 }

@@ -13,12 +13,16 @@ import java.io.PrintStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import loan.Loan;
+import newNote.AddNote;
 import note.Note;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -39,14 +43,19 @@ public class Constant {
     public static Scene withdrawScene;
     public static Scene loanScene;
     public static Scene noteScene;
+    public static Scene addNoteScene;
     public static String expression;
     public static List<String> answers;
+    public static List<String> noteTitles;
+    public static Map<String, String> noteContent;
     public static JSONObject saved;
 
     public Constant(Stage stage, Scene scene) throws Exception {
         Constant.stage = stage;
 
         answers = new ArrayList<>();
+        noteTitles = new ArrayList<>();
+        noteContent = new HashMap<>();
         setSaved();
         setAPI();
 
@@ -57,6 +66,7 @@ public class Constant {
         Withdrawal withdraw = new Withdrawal();
         Loan loan = new Loan();
         Note note = new Note();
+        AddNote addNote = new AddNote();
 
         conversionScene = conv.scene;
         calculatorScene = calc.scene;
@@ -65,6 +75,7 @@ public class Constant {
         withdrawScene = withdraw.scene;
         loanScene = loan.scene;
         noteScene = note.scene;
+        addNoteScene = addNote.scene;
 
         mainScene = scene;
         expression = "";
@@ -113,8 +124,7 @@ public class Constant {
             apiData = apiData.getJSONObject("rates");
             if (apiData.has("rates")) {
                 displayError("Warning:\nInaccurate currency Rates");
-            }
-            else{
+            } else {
                 saved.put("rates", apiData);
             }
         } catch (Exception e) {
@@ -133,8 +143,28 @@ public class Constant {
             answers.add(saved.getJSONObject("answers").getString("answers2"));
             answers.add(saved.getJSONObject("answers").getString("answers3"));
             answers.add(saved.getJSONObject("answers").getString("answers4"));
+            setNotes();
+            is.close();
         } catch (Exception e) {
+            e.printStackTrace();
             displayErrorAndExit("Error retrieving saved input");
+        }
+    }
+
+    private static void setNotes() {
+        try {
+            JSONArray titles = saved.getJSONObject("notes").names();
+            if(titles==null){
+                return;
+            }
+            for (int i = 0; i < titles.length(); i++) {
+                String temp = titles.getString(i);
+                noteTitles.add(temp);
+                noteContent.put(temp, saved.getJSONObject("notes").getString(temp));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Constant.displayErrorAndExit("Problems occurred with Notes");
         }
     }
 
