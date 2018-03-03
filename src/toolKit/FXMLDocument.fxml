@@ -54,11 +54,6 @@
         <URL value="@Tool.css" />
       </stylesheets>
     </Button>
-    <Button id="Button" font="$x1" layoutX="50.0" layoutY="336.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Solvers" textAlignment="CENTER">
-      <stylesheets>
-        <URL value="@Tool.css" />
-      </stylesheets>
-    </Button>
   </children>
   <stylesheets>
     <URL value="@Tool.css" />

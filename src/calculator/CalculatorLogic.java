@@ -49,14 +49,21 @@ public class CalculatorLogic {
             expression.set(0, "-" + expression.get(0));
         }
         for (int i = 0; i < expression.size() - 1; i++) {
+
+            //Formats expressions with multiplication operations next to parenthesis
             if (NUMBERS.indexOf(expression.get(i).charAt(0)) != -1 && expression.get(i + 1).contains("(")) {
                 expression.add(i + 1, "*");
+
+                //Formats percentages
             } else if (NUMBERS.indexOf(expression.get(i).charAt(0)) != -1 && expression.get(i + 1).equals("%")) {
                 double num = Double.parseDouble(expression.get(i)) / 100;
                 expression.set(i, "" + num);
                 expression.remove(i + 1);
+
+                //Formats negative numbers
             } else if (NUMBERS.indexOf(expression.get(i + 1).charAt(0)) != -1 && expression.get(i).contains("-")
-                    && i - 1 >= 0 && NUMBERS.indexOf(expression.get(i - 1).charAt(0)) == -1) {
+                    && i - 1 >= 0 && NUMBERS.indexOf(expression.get(i - 1).charAt(0)) == -1
+                    && !expression.get(i - 1).contains("!")) {
                 expression.remove(i);
                 expression.set(i, "-" + expression.get(i));
             }
@@ -157,8 +164,8 @@ public class CalculatorLogic {
         try {
             num = Double.parseDouble(expression.get(index - 1));
 
-            //Throws an exception if the number before a factorial is a double
-            if ((int) num != num) {
+            //Throws an exception if the number before a factorial is a double or negative
+            if ((int) num != num || num < 0.0) {
                 throw new InvalidExpressionException();
             }
             double num2 = 1;

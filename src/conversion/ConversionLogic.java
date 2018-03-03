@@ -90,7 +90,7 @@ public class ConversionLogic {
         finalUnit /= initialUnit;
         finalUnit *= Double.parseDouble(number);
         result = "" + finalUnit;
-        DecimalFormat pattern = new DecimalFormat("###,###,###.##");
+        DecimalFormat pattern = new DecimalFormat("###,###,###.####");
         return pattern.format(Double.parseDouble(result));
     }
 

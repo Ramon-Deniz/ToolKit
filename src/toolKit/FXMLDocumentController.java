@@ -77,4 +77,5 @@ public class FXMLDocumentController implements Initializable {
     private void handleNote(ActionEvent event) {
         Constant.stage.setScene(Constant.noteScene);
     }
+
 }

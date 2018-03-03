@@ -3,6 +3,8 @@ package newNote;
 import ToolKitConstant.Constant;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import org.json.JSONException;
 
 /**
@@ -33,6 +36,8 @@ public class FXMLAddNoteController implements Initializable {
     private TextArea message = new TextArea();
     @FXML
     private Button addNote;
+    @FXML
+    private Text newNoteNotifier;
 
     /**
      * Initializes the controller class.
@@ -40,6 +45,7 @@ public class FXMLAddNoteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        newNoteNotifier.setVisible(false);
     }
 
     @FXML
@@ -70,13 +76,31 @@ public class FXMLAddNoteController implements Initializable {
 
     @FXML
     private void handleAddNote(ActionEvent event) {
-        if (title.getText().length() > 0) {
+        if (title.getText().length() > 0 && !Constant.noteTitles.contains(title.getText())) {
             try {
                 String currentTitle = title.getText();
+
+                //Get current size of titles
+                int size = Constant.noteTitles.size();
+
                 Constant.noteTitles.add(currentTitle);
                 Constant.noteContent.put(currentTitle, message.getText());
                 Constant.saved.getJSONObject("notes").put(currentTitle, message.getText());
+                Constant.note.updateList();
+
+                //Display temporary message if new note is added
+                if (Constant.noteTitles.size() > size) {
+                    newNoteNotifier.setVisible(true);
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            newNoteNotifier.setVisible(false);
+                        }
+                    }, 2000);
+                }
             } catch (JSONException e) {
+                e.printStackTrace();
                 Constant.displayError("Unable to add note");
             }
         }

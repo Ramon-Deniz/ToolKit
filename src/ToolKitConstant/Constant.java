@@ -34,6 +34,9 @@ import withdrawal.Withdrawal;
  */
 public class Constant {
 
+    //JSON File Location
+    private final static String FILEPATH = "SavedInput/JSONSaved.json";
+
     public static Stage stage;
     public static Scene mainScene;
     public static Scene calculatorScene;
@@ -44,13 +47,16 @@ public class Constant {
     public static Scene loanScene;
     public static Scene noteScene;
     public static Scene addNoteScene;
+    public static Scene solverScene;
     public static String expression;
     public static List<String> answers;
     public static List<String> noteTitles;
     public static Map<String, String> noteContent;
     public static JSONObject saved;
+    public static Note note;
 
     public Constant(Stage stage, Scene scene) throws Exception {
+
         Constant.stage = stage;
 
         answers = new ArrayList<>();
@@ -65,8 +71,8 @@ public class Constant {
         FourK fourK = new FourK();
         Withdrawal withdraw = new Withdrawal();
         Loan loan = new Loan();
-        Note note = new Note();
         AddNote addNote = new AddNote();
+        note = new Note();
 
         conversionScene = conv.scene;
         calculatorScene = calc.scene;
@@ -95,6 +101,7 @@ public class Constant {
                 saved.getJSONObject("answers").put("answers3", answers.get(2));
                 saved.getJSONObject("answers").put("answers4", answers.get(3));
             } catch (JSONException e) {
+                displayError("Unable to update answers");
             }
         }
     }
@@ -137,7 +144,7 @@ public class Constant {
      */
     private static void setSaved() {
         try {
-            InputStream is = new FileInputStream(new File("src/ToolKitConstant/JSONSaved.json"));
+            InputStream is = new FileInputStream(new File(FILEPATH));
             saved = (JSONObject) new JSONTokener(new InputStreamReader(is, "UTF-8")).nextValue();
             answers.add(saved.getJSONObject("answers").getString("answers1"));
             answers.add(saved.getJSONObject("answers").getString("answers2"));
@@ -154,7 +161,7 @@ public class Constant {
     private static void setNotes() {
         try {
             JSONArray titles = saved.getJSONObject("notes").names();
-            if(titles==null){
+            if (titles == null) {
                 return;
             }
             for (int i = 0; i < titles.length(); i++) {
@@ -163,7 +170,6 @@ public class Constant {
                 noteContent.put(temp, saved.getJSONObject("notes").getString(temp));
             }
         } catch (JSONException e) {
-            e.printStackTrace();
             Constant.displayErrorAndExit("Problems occurred with Notes");
         }
     }
@@ -173,7 +179,7 @@ public class Constant {
      */
     public static void save() {
         try {
-            PrintStream output = new PrintStream(new File("src/ToolKitConstant/JSONSaved.json"));
+            PrintStream output = new PrintStream(new File(FILEPATH));
             output.print(saved);
         } catch (FileNotFoundException e) {
             displayErrorAndExit("Error saving to file");

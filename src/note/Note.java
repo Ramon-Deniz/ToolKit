@@ -11,12 +11,21 @@ import javafx.scene.Scene;
  */
 public class Note {
 
+    private FXMLLoader loader;
     public Scene scene;
     public static Parent root;
 
-    public Note() throws IOException{
-
-        root = FXMLLoader.load(getClass().getResource("FXMLNote.fxml"));
+    public Note() throws IOException {
+        loader = new FXMLLoader(getClass().getResource("FXMLNote.fxml"));
+        root = loader.load();
         scene = new Scene(root);
     }
+
+    /**
+     * Updates the options displayed in the drop down menu
+     */
+    public void updateList() {
+        loader.<FXMLNoteController>getController().updateList();
+    }
+
 }

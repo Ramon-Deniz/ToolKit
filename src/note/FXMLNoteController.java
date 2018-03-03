@@ -49,8 +49,7 @@ public class FXMLNoteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        titles.getItems().clear();
-        titles.getItems().addAll(updateList(titles));
+        updateList();
     }
 
     @FXML
@@ -91,21 +90,20 @@ public class FXMLNoteController implements Initializable {
     private void handleSave(ActionEvent event) {
         try {
             //Remove note from list of notes
-            if(titles.getSelectionModel().isEmpty()){
+            if (titles.getSelectionModel().isEmpty()) {
                 return;
             }
-            String currentNote = ""+titles.getValue().toString();
+            String currentNote = "" + titles.getValue().toString();
             Constant.noteTitles.remove(currentNote);
             Constant.noteContent.remove(currentNote);
             Constant.saved.getJSONObject("notes").remove(currentNote);
-            titles.getItems().clear();
 
             //Update list of notes with new addition of note
             String currentNoteTitle = titleTextArea.getText();
             Constant.noteTitles.add(currentNoteTitle);
             Constant.noteContent.put(currentNoteTitle, messages.getText());
             Constant.saved.getJSONObject("notes").put(currentNoteTitle, messages.getText());
-            titles.getItems().addAll(updateList(titles));
+            updateList();
         } catch (JSONException e) {
             Constant.displayError("Unable to save note changes");
         }
@@ -114,15 +112,14 @@ public class FXMLNoteController implements Initializable {
     @FXML
     private void handleDelete(ActionEvent event) {
         try {
-            if(titles.getSelectionModel().isEmpty()){
+            if (titles.getSelectionModel().isEmpty()) {
                 return;
             }
             String currentNote = titles.getValue().toString();
             Constant.noteTitles.remove(currentNote);
             Constant.noteContent.remove(currentNote);
             Constant.saved.getJSONObject("notes").remove(currentNote);
-            titles.getItems().clear();
-            titles.getItems().addAll(updateList(titles));
+            updateList();
             titleTextArea.clear();
             messages.clear();
         } catch (JSONException e) {
@@ -135,9 +132,10 @@ public class FXMLNoteController implements Initializable {
         Constant.stage.setScene(Constant.addNoteScene);
     }
 
-    private static ObservableList<String> updateList(ComboBox titles) {
+    public void updateList() {
         ObservableList<String> noteTitles = FXCollections.observableArrayList(Constant.noteTitles);
-        return noteTitles;
+        titles.getItems().clear();
+        titles.getItems().addAll(noteTitles);
     }
 
 }

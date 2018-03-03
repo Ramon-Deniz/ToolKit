@@ -66,7 +66,6 @@ public class FourKLogic {
         }
         double number = Double.parseDouble(input);
         if (number < 0.0) {
-            System.out.println("getNumber");
             throw new Exception();
         }
         return number;
@@ -82,7 +81,6 @@ public class FourKLogic {
     private static int getAge(String input) throws Exception {
         int number = Integer.parseInt(input);
         if (number < 0) {
-            System.out.println("getAge");
             throw new Exception();
         }
         return number;
