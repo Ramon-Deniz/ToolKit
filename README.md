@@ -38,3 +38,5 @@ Create, overwrite, and delete notes.
 </p>
 
 ## Calculations and notes are saved automatically after the program is closed.
+
+#### (Linux only) If unable to open ToolKit.jar by double clicking, go to the directory that has the jar file and run this command: java -jar ToolKit.jar 
